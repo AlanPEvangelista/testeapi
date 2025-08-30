@@ -955,3 +955,11 @@
 2025-08-30 16:06:14,327 - gateway - INFO - User Service: http://localhost:5001
 2025-08-30 16:06:14,327 - gateway - INFO - Transaction Service: http://localhost:5002
 2025-08-30 16:06:14,328 - gateway - INFO - ==================================================
+2025-08-30 16:06:15,316 - gateway - INFO - ==================================================
+2025-08-30 16:06:15,316 - gateway - INFO - INICIANDO API GATEWAY
+2025-08-30 16:06:15,316 - gateway - INFO - ==================================================
+2025-08-30 16:06:15,316 - gateway - INFO - Servidor rodando na porta: 5000
+2025-08-30 16:06:15,316 - gateway - INFO - Debug mode: True
+2025-08-30 16:06:15,316 - gateway - INFO - User Service: http://localhost:5001
+2025-08-30 16:06:15,316 - gateway - INFO - Transaction Service: http://localhost:5002
+2025-08-30 16:06:15,316 - gateway - INFO - ==================================================

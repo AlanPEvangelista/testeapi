@@ -1126,9 +1126,26 @@
         async function loadTransactions() {
             try {
                 const response = await fetch(`${API_BASE}/transactions`);
+                
+                if (!response.ok) {
+                    throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+                }
+                
                 const data = await response.json();
                 
+                // Verifica se há um erro no response
+                if (data.erro) {
+                    throw new Error(data.mensagem || data.erro);
+                }
+                
+                // Verifica se há transações
+                if (!data.transacoes || !Array.isArray(data.transacoes)) {
+                    document.getElementById('transactions-list').innerHTML = '<div class="alert alert-error">Nenhuma transação encontrada</div>';
+                    return;
+                }
+                
                 let html = '<table class="table"><tr><th>ID</th><th>Usuário ID</th><th>Descrição</th><th>Valor</th><th>Cartão</th><th>Data</th><th>Ações</th></tr>';
+                
                 data.transacoes.forEach(transaction => {
                     const date = new Date(transaction.data_lancamento).toLocaleDateString('pt-BR');
                     const valor = `R$ ${transaction.valor.toFixed(2)}`;
@@ -1149,8 +1166,10 @@
                 html += '</table>';
                 
                 document.getElementById('transactions-list').innerHTML = html;
+                
             } catch (error) {
-                document.getElementById('transactions-list').innerHTML = '<div class="alert alert-error">Erro ao carregar transações</div>';
+                console.error('Erro ao carregar transações:', error);
+                document.getElementById('transactions-list').innerHTML = `<div class="alert alert-error">Erro ao carregar transações: ${error.message}</div>`;
             }
         }
 

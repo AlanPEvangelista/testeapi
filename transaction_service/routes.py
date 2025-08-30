@@ -587,7 +587,7 @@ def dados_agregados_graficos():
             'mensagem': 'Não foi possível gerar dados agregados para os gráficos'
         }), 500
 
-@transaction_routes.route('/transactions/health', methods=['GET']))
+@transaction_routes.route('/transactions/health', methods=['GET'])
 def health_check():
     """
     Endpoint para verificação de saúde do serviço.

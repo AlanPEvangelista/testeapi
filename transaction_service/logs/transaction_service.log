@@ -306,3 +306,21 @@
 2025-08-30 16:20:57,631 - app - INFO - Database: sqlite:///transaction_database.db
 2025-08-30 16:20:57,631 - app - INFO - User Service URL: http://localhost:5001
 2025-08-30 16:20:57,631 - app - INFO - ==================================================
+2025-08-30 16:22:31,447 - app - INFO - Banco de dados inicializado para Transaction Service
+2025-08-30 16:22:33,451 - app - INFO - ==================================================
+2025-08-30 16:22:33,451 - app - INFO - INICIANDO TRANSACTION SERVICE
+2025-08-30 16:22:33,451 - app - INFO - ==================================================
+2025-08-30 16:22:33,451 - app - INFO - Servidor rodando na porta: 5002
+2025-08-30 16:22:33,451 - app - INFO - Debug mode: True
+2025-08-30 16:22:33,451 - app - INFO - Database: sqlite:///transaction_database.db
+2025-08-30 16:22:33,451 - app - INFO - User Service URL: http://localhost:5001
+2025-08-30 16:22:33,451 - app - INFO - ==================================================
+2025-08-30 16:39:02,525 - app - INFO - Banco de dados inicializado para Transaction Service
+2025-08-30 16:39:04,533 - app - INFO - ==================================================
+2025-08-30 16:39:04,534 - app - INFO - INICIANDO TRANSACTION SERVICE
+2025-08-30 16:39:04,535 - app - INFO - ==================================================
+2025-08-30 16:39:04,535 - app - INFO - Servidor rodando na porta: 5002
+2025-08-30 16:39:04,536 - app - INFO - Debug mode: True
+2025-08-30 16:39:04,536 - app - INFO - Database: sqlite:///transaction_database.db
+2025-08-30 16:39:04,537 - app - INFO - User Service URL: http://localhost:5001
+2025-08-30 16:39:04,537 - app - INFO - ==================================================

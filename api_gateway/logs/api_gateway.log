@@ -190,3 +190,768 @@
 2025-08-29 21:28:37,117 - gateway - INFO - Relatório gerado com sucesso para usuário 5
 2025-08-29 21:28:37,134 - gateway - INFO - Gerando relatório agregado para usuário 5
 2025-08-29 21:28:47,402 - gateway - INFO - Relatório gerado com sucesso para usuário 5
+2025-08-29 21:34:48,420 - gateway - INFO - Verificando saúde de todos os serviços
+2025-08-29 21:34:54,579 - gateway - INFO - Verificando saúde de todos os serviços
+2025-08-29 21:34:54,918 - gateway - INFO - Recebida requisição: GET /api/users
+2025-08-29 21:34:54,919 - gateway - INFO - Encaminhando para: GET http://localhost:5001/users
+2025-08-29 21:34:56,970 - gateway - INFO - Resposta recebida: 200
+2025-08-29 21:34:57,291 - gateway - INFO - Recebida requisição: GET /api/transactions
+2025-08-29 21:34:57,291 - gateway - INFO - Encaminhando para: GET http://localhost:5002/transactions
+2025-08-29 21:34:59,343 - gateway - INFO - Resposta recebida: 200
+2025-08-29 21:35:01,052 - gateway - INFO - Recebida requisição: GET /api/users
+2025-08-29 21:35:01,053 - gateway - INFO - Encaminhando para: GET http://localhost:5001/users
+2025-08-29 21:35:03,104 - gateway - INFO - Resposta recebida: 200
+2025-08-29 21:35:03,112 - gateway - INFO - Recebida requisição: GET /api/transactions
+2025-08-29 21:35:03,113 - gateway - INFO - Encaminhando para: GET http://localhost:5002/transactions
+2025-08-29 21:35:04,488 - gateway - INFO - Recebida requisição: GET /api/users
+2025-08-29 21:35:04,489 - gateway - INFO - Encaminhando para: GET http://localhost:5001/users
+2025-08-29 21:35:05,157 - gateway - INFO - Resposta recebida: 200
+2025-08-29 21:35:06,546 - gateway - INFO - Resposta recebida: 200
+2025-08-30 13:26:37,236 - gateway - INFO - ==================================================
+2025-08-30 13:26:37,236 - gateway - INFO - INICIANDO API GATEWAY
+2025-08-30 13:26:37,251 - gateway - INFO - ==================================================
+2025-08-30 13:26:37,251 - gateway - INFO - Servidor rodando na porta: 5000
+2025-08-30 13:26:37,251 - gateway - INFO - Debug mode: True
+2025-08-30 13:26:37,253 - gateway - INFO - User Service: http://localhost:5001
+2025-08-30 13:26:37,253 - gateway - INFO - Transaction Service: http://localhost:5002
+2025-08-30 13:26:37,253 - gateway - INFO - ==================================================
+2025-08-30 13:26:38,765 - gateway - INFO - ==================================================
+2025-08-30 13:26:38,768 - gateway - INFO - INICIANDO API GATEWAY
+2025-08-30 13:26:38,769 - gateway - INFO - ==================================================
+2025-08-30 13:26:38,769 - gateway - INFO - Servidor rodando na porta: 5000
+2025-08-30 13:26:38,770 - gateway - INFO - Debug mode: True
+2025-08-30 13:26:38,770 - gateway - INFO - User Service: http://localhost:5001
+2025-08-30 13:26:38,770 - gateway - INFO - Transaction Service: http://localhost:5002
+2025-08-30 13:26:38,770 - gateway - INFO - ==================================================
+2025-08-30 13:26:42,947 - gateway - INFO - Verificando saúde de todos os serviços
+2025-08-30 13:26:45,464 - gateway - INFO - ==================================================
+2025-08-30 13:26:45,465 - gateway - INFO - INICIANDO API GATEWAY
+2025-08-30 13:26:45,465 - gateway - INFO - ==================================================
+2025-08-30 13:26:45,466 - gateway - INFO - Servidor rodando na porta: 5000
+2025-08-30 13:26:45,466 - gateway - INFO - Debug mode: True
+2025-08-30 13:26:45,467 - gateway - INFO - User Service: http://localhost:5001
+2025-08-30 13:26:45,468 - gateway - INFO - Transaction Service: http://localhost:5002
+2025-08-30 13:26:45,468 - gateway - INFO - ==================================================
+2025-08-30 13:26:45,937 - gateway - INFO - Verificando saúde de todos os serviços
+2025-08-30 13:26:58,104 - gateway - INFO - Verificando saúde de todos os serviços
+2025-08-30 13:27:04,622 - gateway - INFO - Recebida requisição: GET /api/users
+2025-08-30 13:27:04,622 - gateway - INFO - Encaminhando para: GET http://localhost:5001/users
+2025-08-30 13:27:06,735 - gateway - INFO - Resposta recebida: 200
+2025-08-30 13:27:06,752 - gateway - INFO - Recebida requisição: GET /api/transactions
+2025-08-30 13:27:06,752 - gateway - INFO - Encaminhando para: GET http://localhost:5002/transactions
+2025-08-30 13:27:08,811 - gateway - INFO - Resposta recebida: 200
+2025-08-30 13:29:31,708 - gateway - INFO - ==================================================
+2025-08-30 13:29:31,708 - gateway - INFO - INICIANDO API GATEWAY
+2025-08-30 13:29:31,712 - gateway - INFO - ==================================================
+2025-08-30 13:29:31,712 - gateway - INFO - Servidor rodando na porta: 5000
+2025-08-30 13:29:31,712 - gateway - INFO - Debug mode: True
+2025-08-30 13:29:31,712 - gateway - INFO - User Service: http://localhost:5001
+2025-08-30 13:29:31,712 - gateway - INFO - Transaction Service: http://localhost:5002
+2025-08-30 13:29:31,712 - gateway - INFO - ==================================================
+2025-08-30 13:29:41,219 - gateway - INFO - ==================================================
+2025-08-30 13:29:41,219 - gateway - INFO - INICIANDO API GATEWAY
+2025-08-30 13:29:41,219 - gateway - INFO - ==================================================
+2025-08-30 13:29:41,219 - gateway - INFO - Servidor rodando na porta: 5000
+2025-08-30 13:29:41,219 - gateway - INFO - Debug mode: True
+2025-08-30 13:29:41,223 - gateway - INFO - User Service: http://localhost:5001
+2025-08-30 13:29:41,223 - gateway - INFO - Transaction Service: http://localhost:5002
+2025-08-30 13:29:41,223 - gateway - INFO - ==================================================
+2025-08-30 13:30:16,303 - gateway - INFO - ==================================================
+2025-08-30 13:30:16,303 - gateway - INFO - INICIANDO API GATEWAY
+2025-08-30 13:30:16,303 - gateway - INFO - ==================================================
+2025-08-30 13:30:16,303 - gateway - INFO - Servidor rodando na porta: 5000
+2025-08-30 13:30:16,307 - gateway - INFO - Debug mode: True
+2025-08-30 13:30:16,307 - gateway - INFO - User Service: http://localhost:5001
+2025-08-30 13:30:16,307 - gateway - INFO - Transaction Service: http://localhost:5002
+2025-08-30 13:30:16,307 - gateway - INFO - ==================================================
+2025-08-30 13:31:17,788 - gateway - INFO - ==================================================
+2025-08-30 13:31:17,788 - gateway - INFO - INICIANDO API GATEWAY
+2025-08-30 13:31:17,788 - gateway - INFO - ==================================================
+2025-08-30 13:31:17,788 - gateway - INFO - Servidor rodando na porta: 5000
+2025-08-30 13:31:17,788 - gateway - INFO - Debug mode: True
+2025-08-30 13:31:17,788 - gateway - INFO - User Service: http://localhost:5001
+2025-08-30 13:31:17,788 - gateway - INFO - Transaction Service: http://localhost:5002
+2025-08-30 13:31:17,788 - gateway - INFO - ==================================================
+2025-08-30 13:33:29,810 - gateway - INFO - Recebida requisição: GET /api/users
+2025-08-30 13:33:29,812 - gateway - INFO - Encaminhando para: GET http://localhost:5001/users
+2025-08-30 13:33:31,888 - gateway - INFO - Resposta recebida: 200
+2025-08-30 13:33:35,205 - gateway - INFO - Recebida requisição: GET /api/transactions
+2025-08-30 13:33:35,205 - gateway - INFO - Encaminhando para: GET http://localhost:5002/transactions
+2025-08-30 13:33:37,247 - gateway - INFO - Resposta recebida: 200
+2025-08-30 13:33:43,892 - gateway - INFO - Recebida requisição: GET /api/users
+2025-08-30 13:33:43,892 - gateway - INFO - Encaminhando para: GET http://localhost:5001/users
+2025-08-30 13:33:45,942 - gateway - INFO - Resposta recebida: 200
+2025-08-30 13:34:26,546 - gateway - INFO - Recebida requisição: POST /api/transactions
+2025-08-30 13:34:26,548 - gateway - INFO - Encaminhando para: POST http://localhost:5002/transactions
+2025-08-30 13:34:30,646 - gateway - INFO - Resposta recebida: 201
+2025-08-30 13:34:47,377 - gateway - INFO - Verificando saúde de todos os serviços
+2025-08-30 13:34:53,774 - gateway - INFO - Recebida requisição: GET /api/users
+2025-08-30 13:34:53,774 - gateway - INFO - Encaminhando para: GET http://localhost:5001/users
+2025-08-30 13:34:55,819 - gateway - INFO - Resposta recebida: 200
+2025-08-30 13:34:55,830 - gateway - INFO - Recebida requisição: GET /api/transactions
+2025-08-30 13:34:55,833 - gateway - INFO - Encaminhando para: GET http://localhost:5002/transactions
+2025-08-30 13:34:57,874 - gateway - INFO - Resposta recebida: 200
+2025-08-30 13:35:17,256 - gateway - INFO - Verificando saúde de todos os serviços
+2025-08-30 13:35:17,371 - gateway - INFO - Recebida requisição: GET /api/users
+2025-08-30 13:35:17,372 - gateway - INFO - Encaminhando para: GET http://localhost:5001/users
+2025-08-30 13:35:17,570 - gateway - INFO - Recebida requisição: GET /api/transactions
+2025-08-30 13:35:17,570 - gateway - INFO - Encaminhando para: GET http://localhost:5002/transactions
+2025-08-30 13:35:19,436 - gateway - INFO - Resposta recebida: 200
+2025-08-30 13:35:19,621 - gateway - INFO - Resposta recebida: 200
+2025-08-30 13:35:21,352 - gateway - INFO - Recebida requisição: GET /api/users
+2025-08-30 13:35:21,352 - gateway - INFO - Encaminhando para: GET http://localhost:5001/users
+2025-08-30 13:35:23,414 - gateway - INFO - Resposta recebida: 200
+2025-08-30 13:35:31,704 - gateway - INFO - Verificando saúde de todos os serviços
+2025-08-30 13:35:31,705 - gateway - INFO - Recebida requisição: GET /api/users
+2025-08-30 13:35:31,707 - gateway - INFO - Recebida requisição: GET /api/transactions
+2025-08-30 13:35:31,708 - gateway - INFO - Encaminhando para: GET http://localhost:5001/users
+2025-08-30 13:35:31,709 - gateway - INFO - Encaminhando para: GET http://localhost:5002/transactions
+2025-08-30 13:35:33,752 - gateway - INFO - Resposta recebida: 200
+2025-08-30 13:35:33,762 - gateway - INFO - Resposta recebida: 200
+2025-08-30 13:37:07,499 - gateway - INFO - Recebida requisição: GET /api/users
+2025-08-30 13:37:07,502 - gateway - INFO - Encaminhando para: GET http://localhost:5001/users
+2025-08-30 13:37:09,536 - gateway - INFO - Resposta recebida: 200
+2025-08-30 13:38:09,473 - gateway - INFO - ==================================================
+2025-08-30 13:38:09,473 - gateway - INFO - INICIANDO API GATEWAY
+2025-08-30 13:38:09,475 - gateway - INFO - ==================================================
+2025-08-30 13:38:09,475 - gateway - INFO - Servidor rodando na porta: 5000
+2025-08-30 13:38:09,475 - gateway - INFO - Debug mode: True
+2025-08-30 13:38:09,475 - gateway - INFO - User Service: http://localhost:5001
+2025-08-30 13:38:09,477 - gateway - INFO - Transaction Service: http://localhost:5002
+2025-08-30 13:38:09,477 - gateway - INFO - ==================================================
+2025-08-30 13:38:11,268 - gateway - INFO - ==================================================
+2025-08-30 13:38:11,268 - gateway - INFO - INICIANDO API GATEWAY
+2025-08-30 13:38:11,268 - gateway - INFO - ==================================================
+2025-08-30 13:38:11,268 - gateway - INFO - Servidor rodando na porta: 5000
+2025-08-30 13:38:11,268 - gateway - INFO - Debug mode: True
+2025-08-30 13:38:11,268 - gateway - INFO - User Service: http://localhost:5001
+2025-08-30 13:38:11,268 - gateway - INFO - Transaction Service: http://localhost:5002
+2025-08-30 13:38:11,273 - gateway - INFO - ==================================================
+2025-08-30 13:38:14,695 - gateway - INFO - Verificando saúde de todos os serviços
+2025-08-30 13:38:16,809 - gateway - INFO - ==================================================
+2025-08-30 13:38:16,809 - gateway - INFO - INICIANDO API GATEWAY
+2025-08-30 13:38:16,812 - gateway - INFO - ==================================================
+2025-08-30 13:38:16,812 - gateway - INFO - Servidor rodando na porta: 5000
+2025-08-30 13:38:16,814 - gateway - INFO - Debug mode: True
+2025-08-30 13:38:16,815 - gateway - INFO - User Service: http://localhost:5001
+2025-08-30 13:38:16,815 - gateway - INFO - Transaction Service: http://localhost:5002
+2025-08-30 13:38:16,817 - gateway - INFO - ==================================================
+2025-08-30 13:38:20,762 - gateway - INFO - Verificando saúde de todos os serviços
+2025-08-30 13:38:21,087 - gateway - INFO - Recebida requisição: GET /api/users
+2025-08-30 13:38:21,087 - gateway - INFO - Recebida requisição: GET /api/transactions
+2025-08-30 13:38:21,089 - gateway - INFO - Encaminhando para: GET http://localhost:5001/users
+2025-08-30 13:38:21,090 - gateway - INFO - Encaminhando para: GET http://localhost:5002/transactions
+2025-08-30 13:38:23,136 - gateway - INFO - Resposta recebida: 200
+2025-08-30 13:38:23,141 - gateway - INFO - Resposta recebida: 200
+2025-08-30 13:38:40,316 - gateway - INFO - Recebida requisição: GET /api/users
+2025-08-30 13:38:40,316 - gateway - INFO - Encaminhando para: GET http://localhost:5001/users
+2025-08-30 13:38:42,364 - gateway - INFO - Resposta recebida: 200
+2025-08-30 13:38:43,564 - gateway - INFO - Recebida requisição: GET /api/transactions
+2025-08-30 13:38:43,565 - gateway - INFO - Encaminhando para: GET http://localhost:5002/transactions
+2025-08-30 13:38:45,605 - gateway - INFO - Resposta recebida: 200
+2025-08-30 13:43:03,798 - gateway - INFO - Verificando saúde de todos os serviços
+2025-08-30 13:43:59,855 - gateway - INFO - Recebida requisição: GET /api/users
+2025-08-30 13:43:59,855 - gateway - INFO - Encaminhando para: GET http://localhost:5001/users
+2025-08-30 13:44:01,905 - gateway - INFO - Resposta recebida: 200
+2025-08-30 13:44:08,340 - gateway - INFO - Recebida requisição: GET /api/transactions
+2025-08-30 13:44:08,340 - gateway - INFO - Encaminhando para: GET http://localhost:5002/transactions
+2025-08-30 13:44:10,388 - gateway - INFO - Resposta recebida: 200
+2025-08-30 14:13:03,223 - gateway - INFO - Gerando relatório agregado para usuário 1
+2025-08-30 14:13:10,388 - gateway - WARNING - Timeout na tentativa 1 para http://localhost:5002/transactions/stats/user/1
+2025-08-30 14:13:10,389 - gateway - WARNING - Timeout na tentativa 1 para http://localhost:5002/transactions/user/1
+2025-08-30 14:13:15,837 - gateway - INFO - ==================================================
+2025-08-30 14:13:15,838 - gateway - INFO - INICIANDO API GATEWAY
+2025-08-30 14:13:15,838 - gateway - INFO - ==================================================
+2025-08-30 14:13:15,838 - gateway - INFO - Servidor rodando na porta: 5000
+2025-08-30 14:13:15,838 - gateway - INFO - Debug mode: True
+2025-08-30 14:13:15,838 - gateway - INFO - User Service: http://localhost:5001
+2025-08-30 14:13:15,838 - gateway - INFO - Transaction Service: http://localhost:5002
+2025-08-30 14:13:15,838 - gateway - INFO - ==================================================
+2025-08-30 14:13:15,888 - gateway - INFO - Gerando relatório agregado para usuário 1
+2025-08-30 14:13:19,988 - gateway - INFO - Relatório gerado com sucesso para usuário 1 (requisições paralelas)
+2025-08-30 14:13:30,833 - gateway - INFO - Verificando saúde de todos os serviços
+2025-08-30 14:13:30,985 - gateway - INFO - Recebida requisição: GET /api/transactions
+2025-08-30 14:13:30,985 - gateway - INFO - Recebida requisição: GET /api/users
+2025-08-30 14:13:30,985 - gateway - INFO - Encaminhando para: GET http://localhost:5002/transactions
+2025-08-30 14:13:30,985 - gateway - INFO - Encaminhando para: GET http://localhost:5001/users
+2025-08-30 14:13:33,039 - gateway - INFO - Resposta recebida: 200
+2025-08-30 14:13:33,039 - gateway - INFO - Resposta recebida: 200
+2025-08-30 14:13:42,740 - gateway - INFO - Verificando saúde de todos os serviços
+2025-08-30 14:13:42,888 - gateway - INFO - Recebida requisição: GET /api/users
+2025-08-30 14:13:42,889 - gateway - INFO - Encaminhando para: GET http://localhost:5001/users
+2025-08-30 14:13:43,056 - gateway - INFO - Recebida requisição: GET /api/transactions
+2025-08-30 14:13:43,056 - gateway - INFO - Encaminhando para: GET http://localhost:5002/transactions
+2025-08-30 14:13:44,953 - gateway - INFO - Resposta recebida: 200
+2025-08-30 14:13:45,088 - gateway - INFO - Resposta recebida: 200
+2025-08-30 14:13:49,888 - gateway - INFO - Recebida requisição: GET /api/transactions
+2025-08-30 14:13:49,888 - gateway - INFO - Encaminhando para: GET http://localhost:5002/transactions
+2025-08-30 14:13:51,925 - gateway - INFO - Resposta recebida: 200
+2025-08-30 14:18:41,471 - gateway - INFO - Recebida requisição: GET /api/transactions/1
+2025-08-30 14:18:41,474 - gateway - INFO - Encaminhando para: GET http://localhost:5002/transactions/1
+2025-08-30 14:18:43,533 - gateway - INFO - Resposta recebida: 200
+2025-08-30 14:18:52,015 - gateway - INFO - Recebida requisição: PUT /api/transactions/1
+2025-08-30 14:18:52,015 - gateway - INFO - Encaminhando para: PUT http://localhost:5002/transactions/1
+2025-08-30 14:18:54,066 - gateway - INFO - Resposta recebida: 500
+2025-08-30 14:21:43,416 - gateway - INFO - Verificando saúde de todos os serviços
+2025-08-30 14:21:43,495 - gateway - INFO - Recebida requisição: GET /api/users
+2025-08-30 14:21:43,495 - gateway - INFO - Recebida requisição: GET /api/transactions
+2025-08-30 14:21:43,495 - gateway - INFO - Encaminhando para: GET http://localhost:5001/users
+2025-08-30 14:21:43,495 - gateway - INFO - Encaminhando para: GET http://localhost:5002/transactions
+2025-08-30 14:21:45,537 - gateway - INFO - Resposta recebida: 200
+2025-08-30 14:21:45,539 - gateway - INFO - Resposta recebida: 200
+2025-08-30 14:22:22,327 - gateway - INFO - Recebida requisição: PUT /api/transactions/1
+2025-08-30 14:22:22,327 - gateway - INFO - Encaminhando para: PUT http://localhost:5002/transactions/1
+2025-08-30 14:22:24,402 - gateway - INFO - Resposta recebida: 200
+2025-08-30 14:22:32,696 - gateway - INFO - Recebida requisição: DELETE /api/transactions/3
+2025-08-30 14:22:32,696 - gateway - INFO - Encaminhando para: DELETE http://localhost:5002/transactions/3
+2025-08-30 14:22:34,774 - gateway - INFO - Resposta recebida: 200
+2025-08-30 14:22:59,854 - gateway - INFO - Verificando saúde de todos os serviços
+2025-08-30 14:22:59,983 - gateway - INFO - Recebida requisição: GET /api/users
+2025-08-30 14:22:59,984 - gateway - INFO - Encaminhando para: GET http://localhost:5001/users
+2025-08-30 14:23:00,161 - gateway - INFO - Recebida requisição: GET /api/transactions
+2025-08-30 14:23:00,161 - gateway - INFO - Encaminhando para: GET http://localhost:5002/transactions
+2025-08-30 14:23:02,032 - gateway - INFO - Resposta recebida: 200
+2025-08-30 14:23:02,212 - gateway - INFO - Resposta recebida: 200
+2025-08-30 14:23:21,360 - gateway - INFO - Recebida requisição: GET /api/transactions
+2025-08-30 14:23:21,360 - gateway - INFO - Encaminhando para: GET http://localhost:5002/transactions
+2025-08-30 14:23:23,427 - gateway - INFO - Resposta recebida: 200
+2025-08-30 14:23:31,987 - gateway - INFO - Recebida requisição: DELETE /api/transactions/7
+2025-08-30 14:23:31,987 - gateway - INFO - Encaminhando para: DELETE http://localhost:5002/transactions/7
+2025-08-30 14:23:34,489 - gateway - INFO - Resposta recebida: 200
+2025-08-30 14:23:34,813 - gateway - INFO - Recebida requisição: GET /api/transactions
+2025-08-30 14:23:34,813 - gateway - INFO - Encaminhando para: GET http://localhost:5002/transactions
+2025-08-30 14:23:36,873 - gateway - INFO - Resposta recebida: 200
+2025-08-30 14:23:46,297 - gateway - INFO - Recebida requisição: GET /api/transactions/9
+2025-08-30 14:23:46,297 - gateway - INFO - Encaminhando para: GET http://localhost:5002/transactions/9
+2025-08-30 14:23:48,344 - gateway - INFO - Resposta recebida: 200
+2025-08-30 14:23:48,652 - gateway - INFO - Recebida requisição: GET /api/transactions/9
+2025-08-30 14:23:48,653 - gateway - INFO - Encaminhando para: GET http://localhost:5002/transactions/9
+2025-08-30 14:23:50,709 - gateway - INFO - Resposta recebida: 200
+2025-08-30 14:23:58,757 - gateway - INFO - Recebida requisição: PUT /api/transactions/9
+2025-08-30 14:23:58,758 - gateway - INFO - Encaminhando para: PUT http://localhost:5002/transactions/9
+2025-08-30 14:24:00,827 - gateway - INFO - Resposta recebida: 200
+2025-08-30 14:24:00,835 - gateway - INFO - Recebida requisição: GET /api/transactions
+2025-08-30 14:24:00,835 - gateway - INFO - Encaminhando para: GET http://localhost:5002/transactions
+2025-08-30 14:24:02,875 - gateway - INFO - Resposta recebida: 200
+2025-08-30 14:29:44,530 - gateway - INFO - ==================================================
+2025-08-30 14:29:44,530 - gateway - INFO - INICIANDO API GATEWAY
+2025-08-30 14:29:44,530 - gateway - INFO - ==================================================
+2025-08-30 14:29:44,530 - gateway - INFO - Servidor rodando na porta: 5000
+2025-08-30 14:29:44,530 - gateway - INFO - Debug mode: True
+2025-08-30 14:29:44,530 - gateway - INFO - User Service: http://localhost:5001
+2025-08-30 14:29:44,530 - gateway - INFO - Transaction Service: http://localhost:5002
+2025-08-30 14:29:44,530 - gateway - INFO - ==================================================
+2025-08-30 14:29:46,816 - gateway - INFO - ==================================================
+2025-08-30 14:29:46,818 - gateway - INFO - INICIANDO API GATEWAY
+2025-08-30 14:29:46,818 - gateway - INFO - ==================================================
+2025-08-30 14:29:46,820 - gateway - INFO - Servidor rodando na porta: 5000
+2025-08-30 14:29:46,820 - gateway - INFO - Debug mode: True
+2025-08-30 14:29:46,820 - gateway - INFO - User Service: http://localhost:5001
+2025-08-30 14:29:46,820 - gateway - INFO - Transaction Service: http://localhost:5002
+2025-08-30 14:29:46,820 - gateway - INFO - ==================================================
+2025-08-30 14:29:59,288 - gateway - INFO - ==================================================
+2025-08-30 14:29:59,288 - gateway - INFO - INICIANDO API GATEWAY
+2025-08-30 14:29:59,291 - gateway - INFO - ==================================================
+2025-08-30 14:29:59,291 - gateway - INFO - Servidor rodando na porta: 5000
+2025-08-30 14:29:59,291 - gateway - INFO - Debug mode: True
+2025-08-30 14:29:59,291 - gateway - INFO - User Service: http://localhost:5001
+2025-08-30 14:29:59,291 - gateway - INFO - Transaction Service: http://localhost:5002
+2025-08-30 14:29:59,291 - gateway - INFO - ==================================================
+2025-08-30 14:30:07,682 - gateway - INFO - ==================================================
+2025-08-30 14:30:07,682 - gateway - INFO - INICIANDO API GATEWAY
+2025-08-30 14:30:07,682 - gateway - INFO - ==================================================
+2025-08-30 14:30:07,682 - gateway - INFO - Servidor rodando na porta: 5000
+2025-08-30 14:30:07,682 - gateway - INFO - Debug mode: True
+2025-08-30 14:30:07,682 - gateway - INFO - User Service: http://localhost:5001
+2025-08-30 14:30:07,682 - gateway - INFO - Transaction Service: http://localhost:5002
+2025-08-30 14:30:07,682 - gateway - INFO - ==================================================
+2025-08-30 14:30:10,015 - gateway - INFO - ==================================================
+2025-08-30 14:30:10,017 - gateway - INFO - INICIANDO API GATEWAY
+2025-08-30 14:30:10,017 - gateway - INFO - ==================================================
+2025-08-30 14:30:10,017 - gateway - INFO - Servidor rodando na porta: 5000
+2025-08-30 14:30:10,017 - gateway - INFO - Debug mode: True
+2025-08-30 14:30:10,017 - gateway - INFO - User Service: http://localhost:5001
+2025-08-30 14:30:10,017 - gateway - INFO - Transaction Service: http://localhost:5002
+2025-08-30 14:30:10,019 - gateway - INFO - ==================================================
+2025-08-30 14:30:15,317 - gateway - INFO - ==================================================
+2025-08-30 14:30:15,319 - gateway - INFO - INICIANDO API GATEWAY
+2025-08-30 14:30:15,319 - gateway - INFO - ==================================================
+2025-08-30 14:30:15,319 - gateway - INFO - Servidor rodando na porta: 5000
+2025-08-30 14:30:15,321 - gateway - INFO - Debug mode: True
+2025-08-30 14:30:15,321 - gateway - INFO - User Service: http://localhost:5001
+2025-08-30 14:30:15,321 - gateway - INFO - Transaction Service: http://localhost:5002
+2025-08-30 14:30:15,321 - gateway - INFO - ==================================================
+2025-08-30 14:30:17,556 - gateway - INFO - ==================================================
+2025-08-30 14:30:17,558 - gateway - INFO - INICIANDO API GATEWAY
+2025-08-30 14:30:17,558 - gateway - INFO - ==================================================
+2025-08-30 14:30:17,558 - gateway - INFO - Servidor rodando na porta: 5000
+2025-08-30 14:30:17,560 - gateway - INFO - Debug mode: True
+2025-08-30 14:30:17,560 - gateway - INFO - User Service: http://localhost:5001
+2025-08-30 14:30:17,560 - gateway - INFO - Transaction Service: http://localhost:5002
+2025-08-30 14:30:17,560 - gateway - INFO - ==================================================
+2025-08-30 14:30:22,757 - gateway - INFO - ==================================================
+2025-08-30 14:30:22,757 - gateway - INFO - INICIANDO API GATEWAY
+2025-08-30 14:30:22,757 - gateway - INFO - ==================================================
+2025-08-30 14:30:22,757 - gateway - INFO - Servidor rodando na porta: 5000
+2025-08-30 14:30:22,757 - gateway - INFO - Debug mode: True
+2025-08-30 14:30:22,757 - gateway - INFO - User Service: http://localhost:5001
+2025-08-30 14:30:22,760 - gateway - INFO - Transaction Service: http://localhost:5002
+2025-08-30 14:30:22,760 - gateway - INFO - ==================================================
+2025-08-30 14:30:29,167 - gateway - INFO - ==================================================
+2025-08-30 14:30:29,167 - gateway - INFO - INICIANDO API GATEWAY
+2025-08-30 14:30:29,170 - gateway - INFO - ==================================================
+2025-08-30 14:30:29,170 - gateway - INFO - Servidor rodando na porta: 5000
+2025-08-30 14:30:29,170 - gateway - INFO - Debug mode: True
+2025-08-30 14:30:29,170 - gateway - INFO - User Service: http://localhost:5001
+2025-08-30 14:30:29,170 - gateway - INFO - Transaction Service: http://localhost:5002
+2025-08-30 14:30:29,172 - gateway - INFO - ==================================================
+2025-08-30 14:30:31,378 - gateway - INFO - ==================================================
+2025-08-30 14:30:31,378 - gateway - INFO - INICIANDO API GATEWAY
+2025-08-30 14:30:31,380 - gateway - INFO - ==================================================
+2025-08-30 14:30:31,380 - gateway - INFO - Servidor rodando na porta: 5000
+2025-08-30 14:30:31,380 - gateway - INFO - Debug mode: True
+2025-08-30 14:30:31,382 - gateway - INFO - User Service: http://localhost:5001
+2025-08-30 14:30:31,382 - gateway - INFO - Transaction Service: http://localhost:5002
+2025-08-30 14:30:31,382 - gateway - INFO - ==================================================
+2025-08-30 14:30:37,740 - gateway - INFO - ==================================================
+2025-08-30 14:30:37,740 - gateway - INFO - INICIANDO API GATEWAY
+2025-08-30 14:30:37,740 - gateway - INFO - ==================================================
+2025-08-30 14:30:37,740 - gateway - INFO - Servidor rodando na porta: 5000
+2025-08-30 14:30:37,740 - gateway - INFO - Debug mode: True
+2025-08-30 14:30:37,740 - gateway - INFO - User Service: http://localhost:5001
+2025-08-30 14:30:37,740 - gateway - INFO - Transaction Service: http://localhost:5002
+2025-08-30 14:30:37,745 - gateway - INFO - ==================================================
+2025-08-30 14:30:40,150 - gateway - INFO - ==================================================
+2025-08-30 14:30:40,150 - gateway - INFO - INICIANDO API GATEWAY
+2025-08-30 14:30:40,150 - gateway - INFO - ==================================================
+2025-08-30 14:30:40,150 - gateway - INFO - Servidor rodando na porta: 5000
+2025-08-30 14:30:40,150 - gateway - INFO - Debug mode: True
+2025-08-30 14:30:40,152 - gateway - INFO - User Service: http://localhost:5001
+2025-08-30 14:30:40,153 - gateway - INFO - Transaction Service: http://localhost:5002
+2025-08-30 14:30:40,153 - gateway - INFO - ==================================================
+2025-08-30 14:30:43,504 - gateway - INFO - ==================================================
+2025-08-30 14:30:43,504 - gateway - INFO - INICIANDO API GATEWAY
+2025-08-30 14:30:43,504 - gateway - INFO - ==================================================
+2025-08-30 14:30:43,506 - gateway - INFO - Servidor rodando na porta: 5000
+2025-08-30 14:30:43,506 - gateway - INFO - Debug mode: True
+2025-08-30 14:30:43,506 - gateway - INFO - User Service: http://localhost:5001
+2025-08-30 14:30:43,506 - gateway - INFO - Transaction Service: http://localhost:5002
+2025-08-30 14:30:43,506 - gateway - INFO - ==================================================
+2025-08-30 14:30:51,018 - gateway - INFO - ==================================================
+2025-08-30 14:30:51,018 - gateway - INFO - INICIANDO API GATEWAY
+2025-08-30 14:30:51,018 - gateway - INFO - ==================================================
+2025-08-30 14:30:51,018 - gateway - INFO - Servidor rodando na porta: 5000
+2025-08-30 14:30:51,018 - gateway - INFO - Debug mode: True
+2025-08-30 14:30:51,018 - gateway - INFO - User Service: http://localhost:5001
+2025-08-30 14:30:51,018 - gateway - INFO - Transaction Service: http://localhost:5002
+2025-08-30 14:30:51,018 - gateway - INFO - ==================================================
+2025-08-30 14:30:54,460 - gateway - INFO - ==================================================
+2025-08-30 14:30:54,460 - gateway - INFO - INICIANDO API GATEWAY
+2025-08-30 14:30:54,460 - gateway - INFO - ==================================================
+2025-08-30 14:30:54,460 - gateway - INFO - Servidor rodando na porta: 5000
+2025-08-30 14:30:54,460 - gateway - INFO - Debug mode: True
+2025-08-30 14:30:54,460 - gateway - INFO - User Service: http://localhost:5001
+2025-08-30 14:30:54,460 - gateway - INFO - Transaction Service: http://localhost:5002
+2025-08-30 14:30:54,460 - gateway - INFO - ==================================================
+2025-08-30 14:30:57,973 - gateway - INFO - ==================================================
+2025-08-30 14:30:57,975 - gateway - INFO - INICIANDO API GATEWAY
+2025-08-30 14:30:57,975 - gateway - INFO - ==================================================
+2025-08-30 14:30:57,975 - gateway - INFO - Servidor rodando na porta: 5000
+2025-08-30 14:30:57,975 - gateway - INFO - Debug mode: True
+2025-08-30 14:30:57,975 - gateway - INFO - User Service: http://localhost:5001
+2025-08-30 14:30:57,975 - gateway - INFO - Transaction Service: http://localhost:5002
+2025-08-30 14:30:57,975 - gateway - INFO - ==================================================
+2025-08-30 14:31:00,351 - gateway - INFO - ==================================================
+2025-08-30 14:31:00,353 - gateway - INFO - INICIANDO API GATEWAY
+2025-08-30 14:31:00,353 - gateway - INFO - ==================================================
+2025-08-30 14:31:00,353 - gateway - INFO - Servidor rodando na porta: 5000
+2025-08-30 14:31:00,353 - gateway - INFO - Debug mode: True
+2025-08-30 14:31:00,353 - gateway - INFO - User Service: http://localhost:5001
+2025-08-30 14:31:00,353 - gateway - INFO - Transaction Service: http://localhost:5002
+2025-08-30 14:31:00,353 - gateway - INFO - ==================================================
+2025-08-30 14:31:06,898 - gateway - INFO - ==================================================
+2025-08-30 14:31:06,898 - gateway - INFO - INICIANDO API GATEWAY
+2025-08-30 14:31:06,898 - gateway - INFO - ==================================================
+2025-08-30 14:31:06,900 - gateway - INFO - Servidor rodando na porta: 5000
+2025-08-30 14:31:06,900 - gateway - INFO - Debug mode: True
+2025-08-30 14:31:06,900 - gateway - INFO - User Service: http://localhost:5001
+2025-08-30 14:31:06,900 - gateway - INFO - Transaction Service: http://localhost:5002
+2025-08-30 14:31:06,900 - gateway - INFO - ==================================================
+2025-08-30 14:31:12,377 - gateway - INFO - ==================================================
+2025-08-30 14:31:12,377 - gateway - INFO - INICIANDO API GATEWAY
+2025-08-30 14:31:12,377 - gateway - INFO - ==================================================
+2025-08-30 14:31:12,377 - gateway - INFO - Servidor rodando na porta: 5000
+2025-08-30 14:31:12,377 - gateway - INFO - Debug mode: True
+2025-08-30 14:31:12,377 - gateway - INFO - User Service: http://localhost:5001
+2025-08-30 14:31:12,377 - gateway - INFO - Transaction Service: http://localhost:5002
+2025-08-30 14:31:12,377 - gateway - INFO - ==================================================
+2025-08-30 14:31:17,845 - gateway - INFO - ==================================================
+2025-08-30 14:31:17,845 - gateway - INFO - INICIANDO API GATEWAY
+2025-08-30 14:31:17,847 - gateway - INFO - ==================================================
+2025-08-30 14:31:17,847 - gateway - INFO - Servidor rodando na porta: 5000
+2025-08-30 14:31:17,847 - gateway - INFO - Debug mode: True
+2025-08-30 14:31:17,849 - gateway - INFO - User Service: http://localhost:5001
+2025-08-30 14:31:17,849 - gateway - INFO - Transaction Service: http://localhost:5002
+2025-08-30 14:31:17,849 - gateway - INFO - ==================================================
+2025-08-30 14:31:21,194 - gateway - INFO - ==================================================
+2025-08-30 14:31:21,194 - gateway - INFO - INICIANDO API GATEWAY
+2025-08-30 14:31:21,196 - gateway - INFO - ==================================================
+2025-08-30 14:31:21,196 - gateway - INFO - Servidor rodando na porta: 5000
+2025-08-30 14:31:21,196 - gateway - INFO - Debug mode: True
+2025-08-30 14:31:21,196 - gateway - INFO - User Service: http://localhost:5001
+2025-08-30 14:31:21,196 - gateway - INFO - Transaction Service: http://localhost:5002
+2025-08-30 14:31:21,196 - gateway - INFO - ==================================================
+2025-08-30 14:38:24,273 - gateway - INFO - ==================================================
+2025-08-30 14:38:24,273 - gateway - INFO - INICIANDO API GATEWAY
+2025-08-30 14:38:24,273 - gateway - INFO - ==================================================
+2025-08-30 14:38:24,273 - gateway - INFO - Servidor rodando na porta: 5000
+2025-08-30 14:38:24,277 - gateway - INFO - Debug mode: True
+2025-08-30 14:38:24,278 - gateway - INFO - User Service: http://localhost:5001
+2025-08-30 14:38:24,278 - gateway - INFO - Transaction Service: http://localhost:5002
+2025-08-30 14:38:24,280 - gateway - INFO - ==================================================
+2025-08-30 15:26:55,111 - gateway - INFO - Recebida requisição: GET /api/users
+2025-08-30 15:26:55,112 - gateway - INFO - Encaminhando para: GET http://localhost:5001/users
+2025-08-30 15:26:57,422 - gateway - INFO - ==================================================
+2025-08-30 15:26:57,424 - gateway - INFO - INICIANDO API GATEWAY
+2025-08-30 15:26:57,424 - gateway - INFO - ==================================================
+2025-08-30 15:26:57,425 - gateway - INFO - Servidor rodando na porta: 5000
+2025-08-30 15:26:57,426 - gateway - INFO - Debug mode: True
+2025-08-30 15:26:57,426 - gateway - INFO - User Service: http://localhost:5001
+2025-08-30 15:26:57,426 - gateway - INFO - Transaction Service: http://localhost:5002
+2025-08-30 15:26:57,427 - gateway - INFO - ==================================================
+2025-08-30 15:26:59,458 - gateway - INFO - Verificando saúde de todos os serviços
+2025-08-30 15:26:59,460 - gateway - INFO - Recebida requisição: GET /api/users
+2025-08-30 15:26:59,461 - gateway - INFO - Recebida requisição: GET /api/transactions
+2025-08-30 15:26:59,462 - gateway - INFO - Encaminhando para: GET http://localhost:5001/users
+2025-08-30 15:26:59,462 - gateway - INFO - Encaminhando para: GET http://localhost:5002/transactions
+2025-08-30 15:27:01,498 - gateway - INFO - Resposta recebida: 200
+2025-08-30 15:27:01,504 - gateway - INFO - Recebida requisição: GET /api/users
+2025-08-30 15:27:01,505 - gateway - INFO - Encaminhando para: GET http://localhost:5001/users
+2025-08-30 15:27:01,516 - gateway - INFO - Resposta recebida: 200
+2025-08-30 15:27:03,563 - gateway - INFO - Resposta recebida: 200
+2025-08-30 15:27:04,470 - gateway - INFO - Recebida requisição: GET /api/transactions
+2025-08-30 15:27:04,470 - gateway - INFO - Encaminhando para: GET http://localhost:5002/transactions
+2025-08-30 15:27:06,075 - gateway - INFO - Recebida requisição: GET /api/users
+2025-08-30 15:27:06,076 - gateway - INFO - Encaminhando para: GET http://localhost:5001/users
+2025-08-30 15:27:06,529 - gateway - INFO - Resposta recebida: 200
+2025-08-30 15:27:08,140 - gateway - INFO - Resposta recebida: 200
+2025-08-30 15:27:08,460 - gateway - INFO - Recebida requisição: GET /api/users
+2025-08-30 15:27:08,460 - gateway - INFO - Encaminhando para: GET http://localhost:5001/users
+2025-08-30 15:27:10,496 - gateway - INFO - Resposta recebida: 200
+2025-08-30 15:27:14,349 - gateway - INFO - Recebida requisição: GET /api/users
+2025-08-30 15:27:14,353 - gateway - INFO - Encaminhando para: GET http://localhost:5001/users
+2025-08-30 15:27:16,381 - gateway - INFO - Resposta recebida: 200
+2025-08-30 15:27:20,021 - gateway - INFO - Gerando relatório agregado para usuário 5
+2025-08-30 15:27:26,910 - gateway - INFO - ==================================================
+2025-08-30 15:27:26,912 - gateway - INFO - INICIANDO API GATEWAY
+2025-08-30 15:27:26,912 - gateway - INFO - ==================================================
+2025-08-30 15:27:26,912 - gateway - INFO - Servidor rodando na porta: 5000
+2025-08-30 15:27:26,912 - gateway - INFO - Debug mode: True
+2025-08-30 15:27:26,912 - gateway - INFO - User Service: http://localhost:5001
+2025-08-30 15:27:26,914 - gateway - INFO - Transaction Service: http://localhost:5002
+2025-08-30 15:27:26,914 - gateway - INFO - ==================================================
+2025-08-30 15:27:26,981 - gateway - INFO - Gerando relatório agregado para usuário 5
+2025-08-30 15:27:31,089 - gateway - INFO - Relatório gerado com sucesso para usuário 5 (requisições paralelas)
+2025-08-30 15:27:31,100 - gateway - INFO - Gerando relatório agregado para usuário 5
+2025-08-30 15:27:35,197 - gateway - INFO - Relatório gerado com sucesso para usuário 5 (requisições paralelas)
+2025-08-30 15:30:40,268 - gateway - INFO - Verificando saúde de todos os serviços
+2025-08-30 15:30:40,579 - gateway - INFO - Recebida requisição: GET /api/users
+2025-08-30 15:30:40,579 - gateway - INFO - Recebida requisição: GET /api/transactions
+2025-08-30 15:30:40,579 - gateway - INFO - Encaminhando para: GET http://localhost:5001/users
+2025-08-30 15:30:40,579 - gateway - INFO - Encaminhando para: GET http://localhost:5002/transactions
+2025-08-30 15:30:42,637 - gateway - INFO - Resposta recebida: 200
+2025-08-30 15:30:44,632 - gateway - WARNING - Erro de conexão na tentativa 1 para http://localhost:5002/transactions
+2025-08-30 15:30:49,185 - gateway - WARNING - Erro de conexão na tentativa 2 para http://localhost:5002/transactions
+2025-08-30 15:30:49,187 - gateway - ERROR - Erro de conexão com http://localhost:5002/transactions
+2025-08-30 15:38:26,498 - gateway - INFO - ==================================================
+2025-08-30 15:38:26,500 - gateway - INFO - INICIANDO API GATEWAY
+2025-08-30 15:38:26,500 - gateway - INFO - ==================================================
+2025-08-30 15:38:26,500 - gateway - INFO - Servidor rodando na porta: 5000
+2025-08-30 15:38:26,500 - gateway - INFO - Debug mode: True
+2025-08-30 15:38:26,502 - gateway - INFO - User Service: http://localhost:5001
+2025-08-30 15:38:26,502 - gateway - INFO - Transaction Service: http://localhost:5002
+2025-08-30 15:38:26,502 - gateway - INFO - ==================================================
+2025-08-30 15:38:28,397 - gateway - INFO - ==================================================
+2025-08-30 15:38:28,397 - gateway - INFO - INICIANDO API GATEWAY
+2025-08-30 15:38:28,397 - gateway - INFO - ==================================================
+2025-08-30 15:38:28,397 - gateway - INFO - Servidor rodando na porta: 5000
+2025-08-30 15:38:28,397 - gateway - INFO - Debug mode: True
+2025-08-30 15:38:28,397 - gateway - INFO - User Service: http://localhost:5001
+2025-08-30 15:38:28,397 - gateway - INFO - Transaction Service: http://localhost:5002
+2025-08-30 15:38:28,397 - gateway - INFO - ==================================================
+2025-08-30 15:43:43,942 - gateway - INFO - ==================================================
+2025-08-30 15:43:43,942 - gateway - INFO - INICIANDO API GATEWAY
+2025-08-30 15:43:43,949 - gateway - INFO - ==================================================
+2025-08-30 15:43:43,949 - gateway - INFO - Servidor rodando na porta: 5000
+2025-08-30 15:43:43,950 - gateway - INFO - Debug mode: True
+2025-08-30 15:43:43,950 - gateway - INFO - User Service: http://localhost:5001
+2025-08-30 15:43:43,950 - gateway - INFO - Transaction Service: http://localhost:5002
+2025-08-30 15:43:43,951 - gateway - INFO - ==================================================
+2025-08-30 15:43:47,210 - gateway - INFO - ==================================================
+2025-08-30 15:43:47,210 - gateway - INFO - INICIANDO API GATEWAY
+2025-08-30 15:43:47,210 - gateway - INFO - ==================================================
+2025-08-30 15:43:47,221 - gateway - INFO - Servidor rodando na porta: 5000
+2025-08-30 15:43:47,221 - gateway - INFO - Debug mode: True
+2025-08-30 15:43:47,221 - gateway - INFO - User Service: http://localhost:5001
+2025-08-30 15:43:47,221 - gateway - INFO - Transaction Service: http://localhost:5002
+2025-08-30 15:43:47,221 - gateway - INFO - ==================================================
+2025-08-30 15:43:48,052 - gateway - INFO - ==================================================
+2025-08-30 15:43:48,052 - gateway - INFO - INICIANDO API GATEWAY
+2025-08-30 15:43:48,052 - gateway - INFO - ==================================================
+2025-08-30 15:43:48,052 - gateway - INFO - Servidor rodando na porta: 5000
+2025-08-30 15:43:48,052 - gateway - INFO - Debug mode: True
+2025-08-30 15:43:48,052 - gateway - INFO - User Service: http://localhost:5001
+2025-08-30 15:43:48,052 - gateway - INFO - Transaction Service: http://localhost:5002
+2025-08-30 15:43:48,052 - gateway - INFO - ==================================================
+2025-08-30 15:43:53,497 - gateway - INFO - Verificando saúde de todos os serviços
+2025-08-30 15:44:30,327 - gateway - INFO - Recebida requisição: GET /api/transactions/charts/aggregated
+2025-08-30 15:44:30,327 - gateway - INFO - Encaminhando para: GET http://localhost:5002/transactions/charts/aggregated
+2025-08-30 15:44:34,392 - gateway - WARNING - Erro de conexão na tentativa 1 para http://localhost:5002/transactions/charts/aggregated
+2025-08-30 15:44:38,959 - gateway - WARNING - Erro de conexão na tentativa 2 para http://localhost:5002/transactions/charts/aggregated
+2025-08-30 15:44:38,959 - gateway - ERROR - Erro de conexão com http://localhost:5002/transactions/charts/aggregated
+2025-08-30 15:44:47,697 - gateway - INFO - Verificando saúde de todos os serviços
+2025-08-30 15:45:28,524 - gateway - INFO - Verificando saúde de todos os serviços
+2025-08-30 15:45:28,636 - gateway - INFO - Recebida requisição: GET /api/transactions
+2025-08-30 15:45:28,636 - gateway - INFO - Encaminhando para: GET http://localhost:5002/transactions
+2025-08-30 15:45:28,824 - gateway - INFO - Recebida requisição: GET /api/users
+2025-08-30 15:45:28,828 - gateway - INFO - Encaminhando para: GET http://localhost:5001/users
+2025-08-30 15:45:30,870 - gateway - INFO - Resposta recebida: 200
+2025-08-30 15:45:32,705 - gateway - WARNING - Erro de conexão na tentativa 1 para http://localhost:5002/transactions
+2025-08-30 15:45:37,245 - gateway - WARNING - Erro de conexão na tentativa 2 para http://localhost:5002/transactions
+2025-08-30 15:45:37,246 - gateway - ERROR - Erro de conexão com http://localhost:5002/transactions
+2025-08-30 15:45:37,565 - gateway - INFO - Recebida requisição: GET /api/transactions/charts/aggregated
+2025-08-30 15:45:37,565 - gateway - INFO - Encaminhando para: GET http://localhost:5002/transactions/charts/aggregated
+2025-08-30 15:45:41,612 - gateway - WARNING - Erro de conexão na tentativa 1 para http://localhost:5002/transactions/charts/aggregated
+2025-08-30 15:45:46,193 - gateway - WARNING - Erro de conexão na tentativa 2 para http://localhost:5002/transactions/charts/aggregated
+2025-08-30 15:45:46,193 - gateway - ERROR - Erro de conexão com http://localhost:5002/transactions/charts/aggregated
+2025-08-30 15:47:12,724 - gateway - INFO - Verificando saúde de todos os serviços
+2025-08-30 15:47:52,780 - gateway - INFO - ==================================================
+2025-08-30 15:47:52,790 - gateway - INFO - INICIANDO API GATEWAY
+2025-08-30 15:47:52,790 - gateway - INFO - ==================================================
+2025-08-30 15:47:52,790 - gateway - INFO - Servidor rodando na porta: 5000
+2025-08-30 15:47:52,792 - gateway - INFO - Debug mode: True
+2025-08-30 15:47:52,792 - gateway - INFO - User Service: http://localhost:5001
+2025-08-30 15:47:52,792 - gateway - INFO - Transaction Service: http://localhost:5002
+2025-08-30 15:47:52,793 - gateway - INFO - ==================================================
+2025-08-30 15:47:53,512 - gateway - INFO - ==================================================
+2025-08-30 15:47:53,512 - gateway - INFO - INICIANDO API GATEWAY
+2025-08-30 15:47:53,512 - gateway - INFO - ==================================================
+2025-08-30 15:47:53,512 - gateway - INFO - Servidor rodando na porta: 5000
+2025-08-30 15:47:53,512 - gateway - INFO - Debug mode: True
+2025-08-30 15:47:53,512 - gateway - INFO - User Service: http://localhost:5001
+2025-08-30 15:47:53,512 - gateway - INFO - Transaction Service: http://localhost:5002
+2025-08-30 15:47:53,512 - gateway - INFO - ==================================================
+2025-08-30 15:47:59,489 - gateway - INFO - Verificando saúde de todos os serviços
+2025-08-30 15:48:03,380 - gateway - INFO - Verificando saúde de todos os serviços
+2025-08-30 15:48:03,380 - gateway - INFO - Recebida requisição: GET /api/users
+2025-08-30 15:48:03,380 - gateway - INFO - Recebida requisição: GET /api/transactions
+2025-08-30 15:48:03,380 - gateway - INFO - Encaminhando para: GET http://localhost:5001/users
+2025-08-30 15:48:03,380 - gateway - INFO - Encaminhando para: GET http://localhost:5002/transactions
+2025-08-30 15:48:05,423 - gateway - INFO - Resposta recebida: 200
+2025-08-30 15:48:07,444 - gateway - WARNING - Erro de conexão na tentativa 1 para http://localhost:5002/transactions
+2025-08-30 15:48:12,000 - gateway - WARNING - Erro de conexão na tentativa 2 para http://localhost:5002/transactions
+2025-08-30 15:48:12,002 - gateway - ERROR - Erro de conexão com http://localhost:5002/transactions
+2025-08-30 15:48:12,013 - gateway - INFO - Recebida requisição: GET /api/transactions/charts/aggregated
+2025-08-30 15:48:12,016 - gateway - INFO - Encaminhando para: GET http://localhost:5002/transactions/charts/aggregated
+2025-08-30 15:48:16,077 - gateway - WARNING - Erro de conexão na tentativa 1 para http://localhost:5002/transactions/charts/aggregated
+2025-08-30 15:48:20,650 - gateway - WARNING - Erro de conexão na tentativa 2 para http://localhost:5002/transactions/charts/aggregated
+2025-08-30 15:48:20,650 - gateway - ERROR - Erro de conexão com http://localhost:5002/transactions/charts/aggregated
+2025-08-30 15:50:15,896 - gateway - INFO - Verificando saúde de todos os serviços
+2025-08-30 15:52:27,505 - gateway - INFO - Verificando saúde de todos os serviços
+2025-08-30 15:52:27,810 - gateway - INFO - Recebida requisição: GET /api/users
+2025-08-30 15:52:27,810 - gateway - INFO - Encaminhando para: GET http://localhost:5001/users
+2025-08-30 15:52:27,810 - gateway - INFO - Recebida requisição: GET /api/transactions
+2025-08-30 15:52:27,810 - gateway - INFO - Encaminhando para: GET http://localhost:5002/transactions
+2025-08-30 15:52:29,835 - gateway - INFO - Resposta recebida: 200
+2025-08-30 15:52:31,850 - gateway - WARNING - Erro de conexão na tentativa 1 para http://localhost:5002/transactions
+2025-08-30 15:52:36,426 - gateway - WARNING - Erro de conexão na tentativa 2 para http://localhost:5002/transactions
+2025-08-30 15:52:36,426 - gateway - ERROR - Erro de conexão com http://localhost:5002/transactions
+2025-08-30 15:52:36,739 - gateway - INFO - Recebida requisição: GET /api/transactions/charts/aggregated
+2025-08-30 15:52:36,739 - gateway - INFO - Encaminhando para: GET http://localhost:5002/transactions/charts/aggregated
+2025-08-30 15:52:40,814 - gateway - WARNING - Erro de conexão na tentativa 1 para http://localhost:5002/transactions/charts/aggregated
+2025-08-30 15:52:45,371 - gateway - WARNING - Erro de conexão na tentativa 2 para http://localhost:5002/transactions/charts/aggregated
+2025-08-30 15:52:45,372 - gateway - ERROR - Erro de conexão com http://localhost:5002/transactions/charts/aggregated
+2025-08-30 15:52:47,382 - gateway - INFO - Recebida requisição: GET /api/transactions/charts/aggregated
+2025-08-30 15:52:47,387 - gateway - INFO - Encaminhando para: GET http://localhost:5002/transactions/charts/aggregated
+2025-08-30 15:52:51,442 - gateway - WARNING - Erro de conexão na tentativa 1 para http://localhost:5002/transactions/charts/aggregated
+2025-08-30 15:52:55,988 - gateway - WARNING - Erro de conexão na tentativa 2 para http://localhost:5002/transactions/charts/aggregated
+2025-08-30 15:52:55,988 - gateway - ERROR - Erro de conexão com http://localhost:5002/transactions/charts/aggregated
+2025-08-30 15:52:58,316 - gateway - INFO - Recebida requisição: GET /api/transactions/charts/aggregated
+2025-08-30 15:52:58,316 - gateway - INFO - Encaminhando para: GET http://localhost:5002/transactions/charts/aggregated
+2025-08-30 15:53:02,382 - gateway - WARNING - Erro de conexão na tentativa 1 para http://localhost:5002/transactions/charts/aggregated
+2025-08-30 15:53:06,931 - gateway - WARNING - Erro de conexão na tentativa 2 para http://localhost:5002/transactions/charts/aggregated
+2025-08-30 15:53:06,931 - gateway - ERROR - Erro de conexão com http://localhost:5002/transactions/charts/aggregated
+2025-08-30 15:53:08,950 - gateway - INFO - Recebida requisição: GET /api/transactions/charts/aggregated
+2025-08-30 15:53:08,950 - gateway - INFO - Encaminhando para: GET http://localhost:5002/transactions/charts/aggregated
+2025-08-30 15:53:13,004 - gateway - WARNING - Erro de conexão na tentativa 1 para http://localhost:5002/transactions/charts/aggregated
+2025-08-30 15:53:17,556 - gateway - WARNING - Erro de conexão na tentativa 2 para http://localhost:5002/transactions/charts/aggregated
+2025-08-30 15:53:17,556 - gateway - ERROR - Erro de conexão com http://localhost:5002/transactions/charts/aggregated
+2025-08-30 15:53:22,995 - gateway - INFO - Verificando saúde de todos os serviços
+2025-08-30 15:53:22,997 - gateway - INFO - Recebida requisição: GET /api/users
+2025-08-30 15:53:22,998 - gateway - INFO - Recebida requisição: GET /api/transactions
+2025-08-30 15:53:22,999 - gateway - INFO - Encaminhando para: GET http://localhost:5001/users
+2025-08-30 15:53:22,999 - gateway - INFO - Encaminhando para: GET http://localhost:5002/transactions
+2025-08-30 15:53:25,023 - gateway - INFO - Resposta recebida: 200
+2025-08-30 15:53:27,065 - gateway - WARNING - Erro de conexão na tentativa 1 para http://localhost:5002/transactions
+2025-08-30 15:53:31,619 - gateway - WARNING - Erro de conexão na tentativa 2 para http://localhost:5002/transactions
+2025-08-30 15:53:31,619 - gateway - ERROR - Erro de conexão com http://localhost:5002/transactions
+2025-08-30 15:53:31,631 - gateway - INFO - Recebida requisição: GET /api/transactions/charts/aggregated
+2025-08-30 15:53:31,632 - gateway - INFO - Encaminhando para: GET http://localhost:5002/transactions/charts/aggregated
+2025-08-30 15:53:35,690 - gateway - WARNING - Erro de conexão na tentativa 1 para http://localhost:5002/transactions/charts/aggregated
+2025-08-30 15:53:40,253 - gateway - WARNING - Erro de conexão na tentativa 2 para http://localhost:5002/transactions/charts/aggregated
+2025-08-30 15:53:40,254 - gateway - ERROR - Erro de conexão com http://localhost:5002/transactions/charts/aggregated
+2025-08-30 15:53:42,574 - gateway - INFO - Recebida requisição: GET /api/transactions/charts/aggregated
+2025-08-30 15:53:42,574 - gateway - INFO - Encaminhando para: GET http://localhost:5002/transactions/charts/aggregated
+2025-08-30 15:53:46,623 - gateway - WARNING - Erro de conexão na tentativa 1 para http://localhost:5002/transactions/charts/aggregated
+2025-08-30 15:53:51,167 - gateway - WARNING - Erro de conexão na tentativa 2 para http://localhost:5002/transactions/charts/aggregated
+2025-08-30 15:53:51,167 - gateway - ERROR - Erro de conexão com http://localhost:5002/transactions/charts/aggregated
+2025-08-30 15:53:53,182 - gateway - INFO - Recebida requisição: GET /api/transactions/charts/aggregated
+2025-08-30 15:53:53,182 - gateway - INFO - Encaminhando para: GET http://localhost:5002/transactions/charts/aggregated
+2025-08-30 15:53:57,228 - gateway - WARNING - Erro de conexão na tentativa 1 para http://localhost:5002/transactions/charts/aggregated
+2025-08-30 15:54:01,776 - gateway - WARNING - Erro de conexão na tentativa 2 para http://localhost:5002/transactions/charts/aggregated
+2025-08-30 15:54:01,776 - gateway - ERROR - Erro de conexão com http://localhost:5002/transactions/charts/aggregated
+2025-08-30 15:54:04,096 - gateway - INFO - Recebida requisição: GET /api/transactions/charts/aggregated
+2025-08-30 15:54:04,097 - gateway - INFO - Encaminhando para: GET http://localhost:5002/transactions/charts/aggregated
+2025-08-30 15:54:08,168 - gateway - WARNING - Erro de conexão na tentativa 1 para http://localhost:5002/transactions/charts/aggregated
+2025-08-30 15:54:08,648 - gateway - INFO - Verificando saúde de todos os serviços
+2025-08-30 15:54:08,955 - gateway - INFO - Recebida requisição: GET /api/users
+2025-08-30 15:54:08,955 - gateway - INFO - Encaminhando para: GET http://localhost:5001/users
+2025-08-30 15:54:08,963 - gateway - INFO - Recebida requisição: GET /api/transactions
+2025-08-30 15:54:08,963 - gateway - INFO - Encaminhando para: GET http://localhost:5002/transactions
+2025-08-30 15:54:11,009 - gateway - INFO - Resposta recebida: 200
+2025-08-30 15:54:12,746 - gateway - WARNING - Erro de conexão na tentativa 2 para http://localhost:5002/transactions/charts/aggregated
+2025-08-30 15:54:12,746 - gateway - ERROR - Erro de conexão com http://localhost:5002/transactions/charts/aggregated
+2025-08-30 15:54:13,019 - gateway - WARNING - Erro de conexão na tentativa 1 para http://localhost:5002/transactions
+2025-08-30 15:54:17,568 - gateway - WARNING - Erro de conexão na tentativa 2 para http://localhost:5002/transactions
+2025-08-30 15:54:17,568 - gateway - ERROR - Erro de conexão com http://localhost:5002/transactions
+2025-08-30 15:54:17,886 - gateway - INFO - Recebida requisição: GET /api/transactions/charts/aggregated
+2025-08-30 15:54:17,886 - gateway - INFO - Encaminhando para: GET http://localhost:5002/transactions/charts/aggregated
+2025-08-30 15:54:21,926 - gateway - WARNING - Erro de conexão na tentativa 1 para http://localhost:5002/transactions/charts/aggregated
+2025-08-30 15:54:26,503 - gateway - WARNING - Erro de conexão na tentativa 2 para http://localhost:5002/transactions/charts/aggregated
+2025-08-30 15:54:26,503 - gateway - ERROR - Erro de conexão com http://localhost:5002/transactions/charts/aggregated
+2025-08-30 15:54:29,474 - gateway - INFO - Recebida requisição: GET /api/transactions/charts/aggregated
+2025-08-30 15:54:29,474 - gateway - INFO - Encaminhando para: GET http://localhost:5002/transactions/charts/aggregated
+2025-08-30 15:54:33,551 - gateway - WARNING - Erro de conexão na tentativa 1 para http://localhost:5002/transactions/charts/aggregated
+2025-08-30 15:54:38,105 - gateway - WARNING - Erro de conexão na tentativa 2 para http://localhost:5002/transactions/charts/aggregated
+2025-08-30 15:54:38,105 - gateway - ERROR - Erro de conexão com http://localhost:5002/transactions/charts/aggregated
+2025-08-30 15:54:40,783 - gateway - INFO - Recebida requisição: GET /api/transactions/charts/aggregated
+2025-08-30 15:54:40,783 - gateway - INFO - Encaminhando para: GET http://localhost:5002/transactions/charts/aggregated
+2025-08-30 15:54:44,838 - gateway - WARNING - Erro de conexão na tentativa 1 para http://localhost:5002/transactions/charts/aggregated
+2025-08-30 15:54:49,394 - gateway - WARNING - Erro de conexão na tentativa 2 para http://localhost:5002/transactions/charts/aggregated
+2025-08-30 15:54:49,395 - gateway - ERROR - Erro de conexão com http://localhost:5002/transactions/charts/aggregated
+2025-08-30 15:54:51,476 - gateway - INFO - Recebida requisição: GET /api/transactions/charts/aggregated
+2025-08-30 15:54:51,476 - gateway - INFO - Encaminhando para: GET http://localhost:5002/transactions/charts/aggregated
+2025-08-30 15:54:55,535 - gateway - WARNING - Erro de conexão na tentativa 1 para http://localhost:5002/transactions/charts/aggregated
+2025-08-30 15:54:56,664 - gateway - INFO - Recebida requisição: GET /api/transactions/charts/aggregated
+2025-08-30 15:54:56,666 - gateway - INFO - Encaminhando para: GET http://localhost:5002/transactions/charts/aggregated
+2025-08-30 15:55:00,737 - gateway - WARNING - Erro de conexão na tentativa 1 para http://localhost:5002/transactions/charts/aggregated
+2025-08-30 15:55:05,313 - gateway - WARNING - Erro de conexão na tentativa 2 para http://localhost:5002/transactions/charts/aggregated
+2025-08-30 15:55:05,313 - gateway - ERROR - Erro de conexão com http://localhost:5002/transactions/charts/aggregated
+2025-08-30 15:55:33,013 - gateway - INFO - ==================================================
+2025-08-30 15:55:33,013 - gateway - INFO - INICIANDO API GATEWAY
+2025-08-30 15:55:33,017 - gateway - INFO - ==================================================
+2025-08-30 15:55:33,017 - gateway - INFO - Servidor rodando na porta: 5000
+2025-08-30 15:55:33,018 - gateway - INFO - Debug mode: True
+2025-08-30 15:55:33,018 - gateway - INFO - User Service: http://localhost:5001
+2025-08-30 15:55:33,019 - gateway - INFO - Transaction Service: http://localhost:5002
+2025-08-30 15:55:33,019 - gateway - INFO - ==================================================
+2025-08-30 15:55:33,879 - gateway - INFO - ==================================================
+2025-08-30 15:55:33,879 - gateway - INFO - INICIANDO API GATEWAY
+2025-08-30 15:55:33,879 - gateway - INFO - ==================================================
+2025-08-30 15:55:33,884 - gateway - INFO - Servidor rodando na porta: 5000
+2025-08-30 15:55:33,884 - gateway - INFO - Debug mode: True
+2025-08-30 15:55:33,885 - gateway - INFO - User Service: http://localhost:5001
+2025-08-30 15:55:33,885 - gateway - INFO - Transaction Service: http://localhost:5002
+2025-08-30 15:55:33,886 - gateway - INFO - ==================================================
+2025-08-30 15:55:39,634 - gateway - INFO - Verificando saúde de todos os serviços
+2025-08-30 16:01:31,144 - gateway - INFO - ==================================================
+2025-08-30 16:01:31,144 - gateway - INFO - INICIANDO API GATEWAY
+2025-08-30 16:01:31,144 - gateway - INFO - ==================================================
+2025-08-30 16:01:31,144 - gateway - INFO - Servidor rodando na porta: 5000
+2025-08-30 16:01:31,144 - gateway - INFO - Debug mode: True
+2025-08-30 16:01:31,144 - gateway - INFO - User Service: http://localhost:5001
+2025-08-30 16:01:31,144 - gateway - INFO - Transaction Service: http://localhost:5002
+2025-08-30 16:01:31,144 - gateway - INFO - ==================================================
+2025-08-30 16:01:32,110 - gateway - INFO - ==================================================
+2025-08-30 16:01:32,110 - gateway - INFO - INICIANDO API GATEWAY
+2025-08-30 16:01:32,121 - gateway - INFO - ==================================================
+2025-08-30 16:01:32,121 - gateway - INFO - Servidor rodando na porta: 5000
+2025-08-30 16:01:32,121 - gateway - INFO - Debug mode: True
+2025-08-30 16:01:32,121 - gateway - INFO - User Service: http://localhost:5001
+2025-08-30 16:01:32,121 - gateway - INFO - Transaction Service: http://localhost:5002
+2025-08-30 16:01:32,121 - gateway - INFO - ==================================================
+2025-08-30 16:02:35,126 - gateway - INFO - Verificando saúde de todos os serviços
+2025-08-30 16:02:35,427 - gateway - INFO - Recebida requisição: GET /api/users
+2025-08-30 16:02:35,427 - gateway - INFO - Encaminhando para: GET http://localhost:5001/users
+2025-08-30 16:02:35,439 - gateway - INFO - Recebida requisição: GET /api/transactions
+2025-08-30 16:02:35,439 - gateway - INFO - Encaminhando para: GET http://localhost:5002/transactions
+2025-08-30 16:02:37,463 - gateway - INFO - Resposta recebida: 200
+2025-08-30 16:02:39,524 - gateway - WARNING - Erro de conexão na tentativa 1 para http://localhost:5002/transactions
+2025-08-30 16:02:44,061 - gateway - WARNING - Erro de conexão na tentativa 2 para http://localhost:5002/transactions
+2025-08-30 16:02:44,061 - gateway - ERROR - Erro de conexão com http://localhost:5002/transactions
+2025-08-30 16:02:44,070 - gateway - INFO - Recebida requisição: GET /api/transactions/charts/aggregated
+2025-08-30 16:02:44,071 - gateway - INFO - Encaminhando para: GET http://localhost:5002/transactions/charts/aggregated
+2025-08-30 16:02:48,123 - gateway - WARNING - Erro de conexão na tentativa 1 para http://localhost:5002/transactions/charts/aggregated
+2025-08-30 16:02:52,680 - gateway - WARNING - Erro de conexão na tentativa 2 para http://localhost:5002/transactions/charts/aggregated
+2025-08-30 16:02:52,681 - gateway - ERROR - Erro de conexão com http://localhost:5002/transactions/charts/aggregated
+2025-08-30 16:02:55,782 - gateway - INFO - Recebida requisição: GET /api/transactions/charts/aggregated
+2025-08-30 16:02:55,782 - gateway - INFO - Encaminhando para: GET http://localhost:5002/transactions/charts/aggregated
+2025-08-30 16:02:59,825 - gateway - WARNING - Erro de conexão na tentativa 1 para http://localhost:5002/transactions/charts/aggregated
+2025-08-30 16:03:04,383 - gateway - WARNING - Erro de conexão na tentativa 2 para http://localhost:5002/transactions/charts/aggregated
+2025-08-30 16:03:04,384 - gateway - ERROR - Erro de conexão com http://localhost:5002/transactions/charts/aggregated
+2025-08-30 16:03:05,483 - gateway - INFO - Recebida requisição: GET /api/users
+2025-08-30 16:03:05,483 - gateway - INFO - Encaminhando para: GET http://localhost:5001/users
+2025-08-30 16:03:06,703 - gateway - INFO - Recebida requisição: GET /api/transactions/charts/aggregated
+2025-08-30 16:03:06,703 - gateway - INFO - Encaminhando para: GET http://localhost:5002/transactions/charts/aggregated
+2025-08-30 16:03:07,515 - gateway - INFO - Resposta recebida: 200
+2025-08-30 16:03:10,760 - gateway - WARNING - Erro de conexão na tentativa 1 para http://localhost:5002/transactions/charts/aggregated
+2025-08-30 16:03:11,303 - gateway - INFO - Recebida requisição: GET /api/transactions
+2025-08-30 16:03:11,303 - gateway - INFO - Encaminhando para: GET http://localhost:5002/transactions
+2025-08-30 16:03:15,312 - gateway - WARNING - Erro de conexão na tentativa 2 para http://localhost:5002/transactions/charts/aggregated
+2025-08-30 16:03:15,312 - gateway - ERROR - Erro de conexão com http://localhost:5002/transactions/charts/aggregated
+2025-08-30 16:03:15,373 - gateway - WARNING - Erro de conexão na tentativa 1 para http://localhost:5002/transactions
+2025-08-30 16:03:17,634 - gateway - INFO - Recebida requisição: GET /api/transactions/charts/aggregated
+2025-08-30 16:03:17,634 - gateway - INFO - Encaminhando para: GET http://localhost:5002/transactions/charts/aggregated
+2025-08-30 16:03:19,915 - gateway - WARNING - Erro de conexão na tentativa 2 para http://localhost:5002/transactions
+2025-08-30 16:03:19,915 - gateway - ERROR - Erro de conexão com http://localhost:5002/transactions
+2025-08-30 16:03:21,696 - gateway - WARNING - Erro de conexão na tentativa 1 para http://localhost:5002/transactions/charts/aggregated
+2025-08-30 16:03:22,902 - gateway - INFO - Recebida requisição: GET /api/users
+2025-08-30 16:03:22,902 - gateway - INFO - Encaminhando para: GET http://localhost:5001/users
+2025-08-30 16:03:24,958 - gateway - INFO - Resposta recebida: 200
+2025-08-30 16:03:26,266 - gateway - WARNING - Erro de conexão na tentativa 2 para http://localhost:5002/transactions/charts/aggregated
+2025-08-30 16:03:26,266 - gateway - ERROR - Erro de conexão com http://localhost:5002/transactions/charts/aggregated
+2025-08-30 16:03:31,538 - gateway - INFO - Verificando saúde de todos os serviços
+2025-08-30 16:03:31,542 - gateway - INFO - Recebida requisição: GET /api/users
+2025-08-30 16:03:31,542 - gateway - INFO - Recebida requisição: GET /api/transactions
+2025-08-30 16:03:31,542 - gateway - INFO - Encaminhando para: GET http://localhost:5001/users
+2025-08-30 16:03:31,542 - gateway - INFO - Encaminhando para: GET http://localhost:5002/transactions
+2025-08-30 16:03:33,588 - gateway - INFO - Resposta recebida: 200
+2025-08-30 16:03:35,588 - gateway - WARNING - Erro de conexão na tentativa 1 para http://localhost:5002/transactions
+2025-08-30 16:03:40,152 - gateway - WARNING - Erro de conexão na tentativa 2 para http://localhost:5002/transactions
+2025-08-30 16:03:40,152 - gateway - ERROR - Erro de conexão com http://localhost:5002/transactions
+2025-08-30 16:03:40,163 - gateway - INFO - Recebida requisição: GET /api/transactions/charts/aggregated
+2025-08-30 16:03:40,163 - gateway - INFO - Encaminhando para: GET http://localhost:5002/transactions/charts/aggregated
+2025-08-30 16:03:44,239 - gateway - WARNING - Erro de conexão na tentativa 1 para http://localhost:5002/transactions/charts/aggregated
+2025-08-30 16:03:46,352 - gateway - INFO - Recebida requisição: GET /api/users
+2025-08-30 16:03:46,356 - gateway - INFO - Encaminhando para: GET http://localhost:5001/users
+2025-08-30 16:03:48,400 - gateway - INFO - Resposta recebida: 200
+2025-08-30 16:03:49,118 - gateway - WARNING - Erro de conexão na tentativa 2 para http://localhost:5002/transactions/charts/aggregated
+2025-08-30 16:03:49,118 - gateway - ERROR - Erro de conexão com http://localhost:5002/transactions/charts/aggregated
+2025-08-30 16:03:51,435 - gateway - INFO - Recebida requisição: GET /api/transactions/charts/aggregated
+2025-08-30 16:03:51,435 - gateway - INFO - Encaminhando para: GET http://localhost:5002/transactions/charts/aggregated
+2025-08-30 16:03:55,490 - gateway - WARNING - Erro de conexão na tentativa 1 para http://localhost:5002/transactions/charts/aggregated
+2025-08-30 16:04:00,040 - gateway - WARNING - Erro de conexão na tentativa 2 para http://localhost:5002/transactions/charts/aggregated
+2025-08-30 16:04:00,040 - gateway - ERROR - Erro de conexão com http://localhost:5002/transactions/charts/aggregated
+2025-08-30 16:04:02,055 - gateway - INFO - Recebida requisição: GET /api/transactions/charts/aggregated
+2025-08-30 16:04:02,055 - gateway - INFO - Encaminhando para: GET http://localhost:5002/transactions/charts/aggregated
+2025-08-30 16:04:06,099 - gateway - WARNING - Erro de conexão na tentativa 1 para http://localhost:5002/transactions/charts/aggregated
+2025-08-30 16:04:10,664 - gateway - WARNING - Erro de conexão na tentativa 2 para http://localhost:5002/transactions/charts/aggregated
+2025-08-30 16:04:10,664 - gateway - ERROR - Erro de conexão com http://localhost:5002/transactions/charts/aggregated
+2025-08-30 16:06:14,323 - gateway - INFO - ==================================================
+2025-08-30 16:06:14,325 - gateway - INFO - INICIANDO API GATEWAY
+2025-08-30 16:06:14,325 - gateway - INFO - ==================================================
+2025-08-30 16:06:14,325 - gateway - INFO - Servidor rodando na porta: 5000
+2025-08-30 16:06:14,325 - gateway - INFO - Debug mode: True
+2025-08-30 16:06:14,327 - gateway - INFO - User Service: http://localhost:5001
+2025-08-30 16:06:14,327 - gateway - INFO - Transaction Service: http://localhost:5002
+2025-08-30 16:06:14,328 - gateway - INFO - ==================================================

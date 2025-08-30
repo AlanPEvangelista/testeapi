@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sistema de Lançamentos Financeiros</title>
+    <!-- Chart.js para gráficos -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
         * {
             margin: 0;
@@ -233,8 +235,144 @@
             margin-bottom: 5px;
         }
 
-        .stat-card p {
-            opacity: 0.9;
+        .btn-edit {
+            background: #f39c12;
+            color: white;
+            padding: 5px 10px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 12px;
+            margin-right: 5px;
+        }
+
+        .btn-edit:hover {
+            background: #e67e22;
+        }
+
+        .btn-delete {
+            background: #e74c3c;
+            color: white;
+            padding: 5px 10px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 12px;
+        }
+
+        .btn-delete:hover {
+            background: #c0392b;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+        }
+
+        .modal-content {
+            background-color: white;
+            margin: 5% auto;
+            padding: 30px;
+            border-radius: 10px;
+            width: 90%;
+            max-width: 600px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #e9ecef;
+        }
+
+        .modal-header h3 {
+            margin: 0;
+            color: #2c3e50;
+        }
+
+        .close {
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+            color: #999;
+        }
+
+        .close:hover {
+            color: #333;
+        }
+
+        .action-buttons {
+            white-space: nowrap;
+        }
+        
+        .charts-container {
+            display: flex;
+            gap: 15px;
+            margin-top: 15px;
+        }
+        
+        .chart-item {
+            flex: 1;
+            min-height: 200px;
+            max-height: 250px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            padding: 10px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        .chart-title {
+            text-align: center;
+            margin-bottom: 8px;
+            color: #2c3e50;
+            font-size: 12px;
+            font-weight: bold;
+        }
+        
+        @media (max-width: 768px) {
+            .charts-container {
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            .chart-item {
+                min-height: 180px;
+                max-height: 220px;
+                padding: 8px;
+            }
+        }
+        
+        .chart-loading, .chart-error {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 180px;
+            max-height: 220px;
+            text-align: center;
+            color: #666;
+            font-size: 12px;
+            border: 2px dashed #ddd;
+            border-radius: 8px;
+            background: #f8f9fa;
+        }
+        
+        .chart-error {
+            border-color: #e74c3c;
+            background: #fdf2f2;
+        }
+        
+        .chart-loading {
+            border-color: #3498db;
+            background: #f0f8ff;
         }
     </style>
 </head>
@@ -273,9 +411,26 @@
                         </div>
                     </div>
                     <div class="card">
-                        <h3>🏥 Status dos Microservices</h3>
-                        <div id="health-status">Carregando...</div>
+                        <h3>🎨 Visualização de Dados</h3>
+                        <div class="charts-container">
+                            <!-- Gráfico: Valor por Usuário -->
+                            <div class="chart-item">
+                                <div class="chart-title">👥 Valor Gasto por Usuário</div>
+                                <canvas id="userValueChart"></canvas>
+                            </div>
+                                            
+                            <!-- Gráfico: Valor por Tipo de Cartão -->
+                            <div class="chart-item">
+                                <div class="chart-title">💳 Valor por Tipo de Cartão</div>
+                                <canvas id="cardTypeChart"></canvas>
+                            </div>
+                        </div>
                     </div>
+                </div>
+                
+                <div class="card">
+                    <h3>🏥 Status dos Microservices</h3>
+                    <div id="health-status">Carregando...</div>
                 </div>
 
                 <!-- Users Section -->
@@ -375,11 +530,454 @@
         </div>
     </div>
 
+    <!-- Modal para Editar Transação -->
+    <div id="editModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>✏️ Editar Transação</h3>
+                <span class="close" onclick="closeEditModal()">&times;</span>
+            </div>
+            <form id="edit-transaction-form">
+                <input type="hidden" id="edit-transaction-id">
+                
+                <div class="form-group">
+                    <label for="edit-transaction-description">Descrição:</label>
+                    <input type="text" id="edit-transaction-description" required placeholder="Ex: Compra no supermercado">
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="edit-transaction-amount">Valor (R$):</label>
+                        <input type="number" id="edit-transaction-amount" step="0.01" min="0.01" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="edit-transaction-card-type">Tipo de Cartão:</label>
+                        <select id="edit-transaction-card-type" required>
+                            <option value="">Selecione o tipo...</option>
+                            <option value="Crédito">Crédito</option>
+                            <option value="Débito">Débito</option>
+                            <option value="Pré-pago">Pré-pago</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="edit-transaction-card-final">Últimos 4 dígitos:</label>
+                    <input type="text" id="edit-transaction-card-final" maxlength="4" pattern="[0-9]{4}" required placeholder="1234">
+                </div>
+                
+                <div style="text-align: right; margin-top: 20px;">
+                    <button type="button" class="btn btn-secondary" onclick="closeEditModal()">❌ Cancelar</button>
+                    <button type="submit" class="btn btn-primary">💾 Salvar Alterações</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
     <script>
+        // Variáveis globais para os gráficos
+        let userValueChart = null;
+        let cardTypeChart = null;
+        
+        // Load charts data and render charts with retry mechanism
+        async function loadCharts(retryCount = 0) {
+            const maxRetries = 3;
+            const retryDelay = 2000; // 2 seconds
+            
+            try {
+                showChartsLoading();
+                
+                const response = await fetch(`${API_BASE}/transactions/charts/aggregated`);
+                
+                if (!response.ok) {
+                    throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+                }
+                
+                const data = await response.json();
+                
+                // Verifica se os dados são válidos
+                if (!data || (!data.dados_por_usuario && !data.dados_por_cartao)) {
+                    throw new Error('Dados de gráfico inválidos ou vazios');
+                }
+                
+                // Cria gráfico de valor por usuário
+                createUserValueChart(data.dados_por_usuario || {});
+                
+                // Cria gráfico de valor por tipo de cartão
+                createCardTypeChart(data.dados_por_cartao || {});
+                
+                hideChartsLoading();
+                
+            } catch (error) {
+                console.error('Erro ao carregar dados dos gráficos:', error);
+                
+                if (retryCount < maxRetries) {
+                    console.log(`Tentando novamente em ${retryDelay/1000} segundos... (tentativa ${retryCount + 1}/${maxRetries})`);
+                    showChartsRetrying(retryCount + 1, maxRetries);
+                    
+                    setTimeout(() => {
+                        loadCharts(retryCount + 1);
+                    }, retryDelay);
+                } else {
+                    // Se todas as tentativas falharam, oferece modo demo
+                    showChartsDemo();
+                }
+            }
+        }
+        
+        // Mostra estado de carregamento dos gráficos
+        function showChartsLoading() {
+            const userChart = document.getElementById('userValueChart');
+            const cardChart = document.getElementById('cardTypeChart');
+            
+            if (userChart) {
+                userChart.style.display = 'none';
+                userChart.parentElement.innerHTML = userChart.parentElement.innerHTML.replace(/<canvas[^>]*><\/canvas>/, '<div class="chart-loading">📊 Carregando gráfico...</div>');
+            }
+            
+            if (cardChart) {
+                cardChart.style.display = 'none';
+                cardChart.parentElement.innerHTML = cardChart.parentElement.innerHTML.replace(/<canvas[^>]*><\/canvas>/, '<div class="chart-loading">📊 Carregando gráfico...</div>');
+            }
+        }
+        
+        // Mostra estado de tentativa de reconexão
+        function showChartsRetrying(attempt, maxAttempts) {
+            const loadingDivs = document.querySelectorAll('.chart-loading');
+            loadingDivs.forEach(div => {
+                div.innerHTML = `🔄 Tentando reconectar... (${attempt}/${maxAttempts})`;
+            });
+        }
+        
+        // Esconde estado de carregamento
+        function hideChartsLoading() {
+            const loadingDivs = document.querySelectorAll('.chart-loading, .chart-error');
+            loadingDivs.forEach(div => {
+                const canvas = document.createElement('canvas');
+                if (div.parentElement.querySelector('.chart-title').textContent.includes('Usuário')) {
+                    canvas.id = 'userValueChart';
+                } else {
+                    canvas.id = 'cardTypeChart';
+                }
+                div.parentElement.replaceChild(canvas, div);
+            });
+        }
+        
+        // Mostra erro nos gráficos
+        function showChartsError(errorMessage) {
+            const loadingDivs = document.querySelectorAll('.chart-loading');
+            loadingDivs.forEach(div => {
+                div.className = 'chart-error';
+                div.innerHTML = `
+                    <div style="text-align: center; padding: 40px; color: #e74c3c;">
+                        <div style="font-size: 48px; margin-bottom: 20px;">❌</div>
+                        <div style="font-size: 16px; margin-bottom: 10px;"><strong>Erro ao carregar gráfico</strong></div>
+                        <div style="font-size: 12px; margin-bottom: 15px; color: #666;">${errorMessage}</div>
+                        <button onclick="loadCharts(0)" class="btn btn-primary" style="font-size: 12px; padding: 8px 16px; margin-right: 10px;">🔄 Tentar Novamente</button>
+                        <button onclick="showChartsDemo()" class="btn btn-secondary" style="font-size: 12px; padding: 8px 16px;">🎭 Ver Demo</button>
+                    </div>
+                `;
+            });
+        }
+        
+        // Mostra gráficos com dados de demonstração
+        function showChartsDemo() {
+            console.log('Carregando gráficos em modo demonstração');
+            
+            // Dados de demonstração
+            const demoUserData = {
+                '1': {
+                    nome: 'João Silva',
+                    total_gasto: 1250.75,
+                    total_transacoes: 8
+                },
+                '2': {
+                    nome: 'Maria Santos',
+                    total_gasto: 892.30,
+                    total_transacoes: 5
+                },
+                '3': {
+                    nome: 'Pedro Oliveira',
+                    total_gasto: 654.90,
+                    total_transacoes: 3
+                }
+            };
+            
+            const demoCardData = {
+                'Crédito': {
+                    total_gasto: 1450.20,
+                    total_transacoes: 9
+                },
+                'Débito': {
+                    total_gasto: 987.45,
+                    total_transacoes: 5
+                },
+                'Pré-pago': {
+                    total_gasto: 360.30,
+                    total_transacoes: 2
+                }
+            };
+            
+            // Restaura os canvas
+            hideChartsLoading();
+            
+            // Adiciona indicação de modo demo
+            const chartTitles = document.querySelectorAll('.chart-title');
+            chartTitles.forEach(title => {
+                if (!title.textContent.includes('(DEMO)')) {
+                    title.innerHTML += ' <span style="color: #f39c12; font-size: 12px;">(DEMO)</span>';
+                }
+            });
+            
+            // Cria os gráficos com dados demo
+            setTimeout(() => {
+                createUserValueChart(demoUserData);
+                createCardTypeChart(demoCardData);
+                
+                // Mostra alerta informativo
+                showAlert('Gráficos carregados em modo demonstração com dados de exemplo', 'success');
+            }, 100);
+        }
+        
+        // Cria gráfico de valor por usuário
+        function createUserValueChart(dadosUsuarios) {
+            const ctx = document.getElementById('userValueChart');
+            if (!ctx) {
+                console.error('Canvas userValueChart não encontrado');
+                return;
+            }
+            
+            const context = ctx.getContext('2d');
+            
+            // Verifica se há dados
+            if (!dadosUsuarios || Object.keys(dadosUsuarios).length === 0) {
+                // Destrói gráfico anterior se existir
+                if (userValueChart) {
+                    userValueChart.destroy();
+                }
+                
+                // Mostra mensagem de sem dados
+                ctx.parentElement.innerHTML = `
+                    <div class="chart-title">👥 Valor Gasto por Usuário</div>
+                    <div style="text-align: center; padding: 40px; color: #95a5a6;">
+                        <div style="font-size: 32px; margin-bottom: 15px;">📈</div>
+                        <div><strong>Nenhum dado disponível</strong></div>
+                        <div style="font-size: 12px; margin-top: 8px;">Adicione algumas transações para ver o gráfico</div>
+                    </div>
+                `;
+                return;
+            }
+            
+            // Prepara os dados
+            const labels = [];
+            const valores = [];
+            const cores = [
+                '#3498db', '#e74c3c', '#2ecc71', '#f39c12', '#9b59b6',
+                '#1abc9c', '#e67e22', '#34495e', '#f1c40f', '#e91e63'
+            ];
+            
+            Object.entries(dadosUsuarios).forEach(([userId, dados], index) => {
+                labels.push(dados.nome || `Usuário ${userId}`);
+                valores.push(dados.total_gasto || 0);
+            });
+            
+            // Destrói gráfico anterior se existir
+            if (userValueChart) {
+                userValueChart.destroy();
+            }
+            
+            userValueChart = new Chart(context, {
+                type: 'bar',
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        label: 'Valor Total Gasto (R$)',
+                        data: valores,
+                        backgroundColor: cores.slice(0, labels.length),
+                        borderColor: cores.slice(0, labels.length).map(cor => cor.replace('0.8', '1')),
+                        borderWidth: 2,
+                        borderRadius: 5
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    layout: {
+                        padding: {
+                            top: 5,
+                            bottom: 5,
+                            left: 5,
+                            right: 5
+                        }
+                    },
+                    plugins: {
+                        legend: {
+                            display: false
+                        },
+                        tooltip: {
+                            titleFont: {
+                                size: 10
+                            },
+                            bodyFont: {
+                                size: 9
+                            },
+                            callbacks: {
+                                label: function(context) {
+                                    return `R$ ${context.parsed.y.toFixed(2)}`;
+                                }
+                            }
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            ticks: {
+                                font: {
+                                    size: 9
+                                },
+                                callback: function(value) {
+                                    return 'R$ ' + value.toFixed(0);
+                                }
+                            },
+                            grid: {
+                                color: 'rgba(0,0,0,0.1)'
+                            }
+                        },
+                        x: {
+                            ticks: {
+                                font: {
+                                    size: 9
+                                },
+                                maxRotation: 45
+                            },
+                            grid: {
+                                display: false
+                            }
+                        }
+                    },
+                    animation: {
+                        duration: 800,
+                        easing: 'easeInOutQuart'
+                    }
+                }
+            });
+        }
+        
+        // Cria gráfico de valor por tipo de cartão
+        function createCardTypeChart(dadosCartao) {
+            const ctx = document.getElementById('cardTypeChart');
+            if (!ctx) {
+                console.error('Canvas cardTypeChart não encontrado');
+                return;
+            }
+            
+            const context = ctx.getContext('2d');
+            
+            // Verifica se há dados
+            if (!dadosCartao || Object.keys(dadosCartao).length === 0) {
+                // Destrói gráfico anterior se existir
+                if (cardTypeChart) {
+                    cardTypeChart.destroy();
+                }
+                
+                // Mostra mensagem de sem dados
+                ctx.parentElement.innerHTML = `
+                    <div class="chart-title">💳 Valor por Tipo de Cartão</div>
+                    <div style="text-align: center; padding: 40px; color: #95a5a6;">
+                        <div style="font-size: 32px; margin-bottom: 15px;">📊</div>
+                        <div><strong>Nenhum dado disponível</strong></div>
+                        <div style="font-size: 12px; margin-top: 8px;">Adicione algumas transações para ver o gráfico</div>
+                    </div>
+                `;
+                return;
+            }
+            
+            // Prepara os dados
+            const labels = [];
+            const valores = [];
+            const coresCartao = {
+                'Crédito': '#e74c3c',
+                'Débito': '#3498db',
+                'Pré-pago': '#2ecc71'
+            };
+            
+            Object.entries(dadosCartao).forEach(([tipoCartao, dados]) => {
+                labels.push(tipoCartao);
+                valores.push(dados.total_gasto || 0);
+            });
+            
+            const cores = labels.map(label => coresCartao[label] || '#95a5a6');
+            
+            // Destrói gráfico anterior se existir
+            if (cardTypeChart) {
+                cardTypeChart.destroy();
+            }
+            
+            cardTypeChart = new Chart(context, {
+                type: 'doughnut',
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        label: 'Valor Total por Cartão',
+                        data: valores,
+                        backgroundColor: cores,
+                        borderColor: '#ffffff',
+                        borderWidth: 3,
+                        hoverBorderWidth: 5
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    layout: {
+                        padding: {
+                            top: 2,
+                            bottom: 2,
+                            left: 2,
+                            right: 2
+                        }
+                    },
+                    plugins: {
+                        legend: {
+                            position: 'bottom',
+                            labels: {
+                                padding: 8,
+                                usePointStyle: true,
+                                font: {
+                                    size: 9
+                                },
+                                boxWidth: 10,
+                                boxHeight: 10
+                            }
+                        },
+                        tooltip: {
+                            titleFont: {
+                                size: 10
+                            },
+                            bodyFont: {
+                                size: 9
+                            },
+                            callbacks: {
+                                label: function(context) {
+                                    const total = context.dataset.data.reduce((a, b) => a + b, 0);
+                                    const percentage = total > 0 ? ((context.parsed * 100) / total).toFixed(1) : 0;
+                                    return `${context.label}: R$ ${context.parsed.toFixed(2)} (${percentage}%)`;
+                                }
+                            }
+                        }
+                    },
+                    animation: {
+                        duration: 800,
+                        easing: 'easeInOutQuart'
+                    }
+                }
+            });
+        }
+        
         // Base URL for API calls
         const API_BASE = 'http://localhost:5000/api';
         
-        // Show/hide sections
+        // Show/hide sections with optimized loading
         function showSection(sectionId) {
             // Hide all sections
             document.querySelectorAll('.section').forEach(section => {
@@ -397,22 +995,81 @@
             // Add active class to clicked button
             event.target.classList.add('active');
             
-            // Load data based on section
+            // Load data based on section (com cache simples para evitar recarregamentos)
             if (sectionId === 'dashboard') {
-                loadDashboard();
+                if (!window.dashboardLoaded) {
+                    loadDashboard();
+                    window.dashboardLoaded = true;
+                }
             } else if (sectionId === 'users') {
                 loadUsers();
             } else if (sectionId === 'transactions') {
                 loadTransactions();
             } else if (sectionId === 'new-transaction') {
-                loadUsersForSelect();
+                if (!window.usersForSelectLoaded) {
+                    loadUsersForSelect();
+                    window.usersForSelectLoaded = true;
+                }
             } else if (sectionId === 'reports') {
-                loadUsersForReports();
+                if (!window.usersForReportsLoaded) {
+                    loadUsersForReports();
+                    window.usersForReportsLoaded = true;
+                }
             }
         }
 
-        // Load dashboard data
+        // Load dashboard data with parallel API calls for better performance
         async function loadDashboard() {
+            try {
+                // Cria todas as promessas simultaneamente
+                const healthPromise = fetch(`${API_BASE.replace('/api', '')}/health`);
+                const usersPromise = fetch(`${API_BASE}/users`);
+                const transactionsPromise = fetch(`${API_BASE}/transactions`);
+                
+                // Executa todas as requisições em paralelo
+                const [healthResponse, usersResponse, transactionsResponse] = await Promise.all([
+                    healthPromise,
+                    usersPromise,
+                    transactionsPromise
+                ]);
+                
+                // Processa os resultados em paralelo
+                const [health, users, transactionsData] = await Promise.all([
+                    healthResponse.json(),
+                    usersResponse.json(),
+                    transactionsResponse.json()
+                ]);
+                
+                // Atualiza o status de saúde
+                let healthHtml = '<table class="table"><tr><th>Serviço</th><th>Status</th><th>URL</th></tr>';
+                healthHtml += `<tr><td>Gateway</td><td>✅ ${health.gateway_status}</td><td>http://localhost:5000</td></tr>`;
+                
+                for (const [service, info] of Object.entries(health.servicos)) {
+                    const status = info.codigo === 200 ? '✅ Ativo' : '❌ Inativo';
+                    healthHtml += `<tr><td>${service}</td><td>${status}</td><td>${info.url}</td></tr>`;
+                }
+                healthHtml += '</table>';
+                document.getElementById('health-status').innerHTML = healthHtml;
+
+                // Atualiza estatísticas do dashboard
+                document.getElementById('total-users').textContent = users.length;
+                document.getElementById('total-transactions').textContent = transactionsData.count || 0;
+                
+                const totalAmount = transactionsData.transacoes?.reduce((sum, t) => sum + t.valor, 0) || 0;
+                document.getElementById('total-amount').textContent = `R$ ${totalAmount.toFixed(2)}`;
+                
+                // Carrega os gráficos
+                await loadCharts();
+                
+            } catch (error) {
+                console.error('Erro ao carregar dashboard:', error);
+                // Fallback para carregar dados individualmente em caso de erro
+                await loadDashboardFallback();
+            }
+        }
+        
+        // Função fallback para carregar dados individualmente
+        async function loadDashboardFallback() {
             try {
                 // Load health status
                 const healthResponse = await fetch(`${API_BASE.replace('/api', '')}/health`);
@@ -428,7 +1085,7 @@
                 healthHtml += '</table>';
                 document.getElementById('health-status').innerHTML = healthHtml;
 
-                // Load summary stats
+                // Load summary stats individually
                 const usersResponse = await fetch(`${API_BASE}/users`);
                 const users = await usersResponse.json();
                 document.getElementById('total-users').textContent = users.length;
@@ -441,7 +1098,8 @@
                 document.getElementById('total-amount').textContent = `R$ ${totalAmount.toFixed(2)}`;
                 
             } catch (error) {
-                console.error('Erro ao carregar dashboard:', error);
+                console.error('Erro ao carregar dashboard (fallback):', error);
+                document.getElementById('health-status').innerHTML = '<div class="alert alert-error">Erro ao carregar status dos serviços</div>';
             }
         }
 
@@ -464,18 +1122,29 @@
             }
         }
 
-        // Load transactions
+        // Load transactions with edit and delete functionality
         async function loadTransactions() {
             try {
                 const response = await fetch(`${API_BASE}/transactions`);
                 const data = await response.json();
                 
-                let html = '<table class="table"><tr><th>ID</th><th>Usuário ID</th><th>Descrição</th><th>Valor</th><th>Cartão</th><th>Data</th></tr>';
+                let html = '<table class="table"><tr><th>ID</th><th>Usuário ID</th><th>Descrição</th><th>Valor</th><th>Cartão</th><th>Data</th><th>Ações</th></tr>';
                 data.transacoes.forEach(transaction => {
                     const date = new Date(transaction.data_lancamento).toLocaleDateString('pt-BR');
                     const valor = `R$ ${transaction.valor.toFixed(2)}`;
                     const cartao = `${transaction.cartao_tipo} ****${transaction.cartao_final}`;
-                    html += `<tr><td>${transaction.id}</td><td>${transaction.usuario_id}</td><td>${transaction.descricao}</td><td>${valor}</td><td>${cartao}</td><td>${date}</td></tr>`;
+                    html += `<tr>
+                        <td>${transaction.id}</td>
+                        <td>${transaction.usuario_id}</td>
+                        <td>${transaction.descricao}</td>
+                        <td>${valor}</td>
+                        <td>${cartao}</td>
+                        <td>${date}</td>
+                        <td class="action-buttons">
+                            <button class="btn-edit" onclick="editTransaction(${transaction.id})" title="Editar transação">✏️ Editar</button>
+                            <button class="btn-delete" onclick="confirmDeleteTransaction(${transaction.id}, '${transaction.descricao}')" title="Excluir transação">🗑️ Excluir</button>
+                        </td>
+                    </tr>`;
                 });
                 html += '</table>';
                 
@@ -638,8 +1307,122 @@
             }, 5000);
         }
 
-        // Initialize dashboard on page load
+        // Edit and Delete Transaction Functions
+        async function editTransaction(transactionId) {
+            try {
+                // Busca os dados da transação
+                const response = await fetch(`${API_BASE}/transactions/${transactionId}`);
+                if (!response.ok) {
+                    throw new Error('Transação não encontrada');
+                }
+                
+                const transaction = await response.json();
+                
+                // Preenche o modal com os dados da transação
+                document.getElementById('edit-transaction-id').value = transaction.id;
+                document.getElementById('edit-transaction-description').value = transaction.descricao;
+                document.getElementById('edit-transaction-amount').value = transaction.valor;
+                document.getElementById('edit-transaction-card-type').value = transaction.cartao_tipo;
+                document.getElementById('edit-transaction-card-final').value = transaction.cartao_final;
+                
+                // Exibe o modal
+                document.getElementById('editModal').style.display = 'block';
+                
+            } catch (error) {
+                showAlert(`Erro ao carregar transação: ${error.message}`, 'error');
+            }
+        }
+
+        function closeEditModal() {
+            document.getElementById('editModal').style.display = 'none';
+            document.getElementById('edit-transaction-form').reset();
+        }
+
+        async function confirmDeleteTransaction(transactionId, description) {
+            const confirmMessage = `Tem certeza que deseja excluir a transação "${description}"?\n\nEsta ação não pode ser desfeita.`;
+            
+            if (confirm(confirmMessage)) {
+                await deleteTransaction(transactionId);
+            }
+        }
+
+        async function deleteTransaction(transactionId) {
+            try {
+                const response = await fetch(`${API_BASE}/transactions/${transactionId}`, {
+                    method: 'DELETE',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                });
+                
+                if (response.ok) {
+                    showAlert('Transação excluída com sucesso!', 'success');
+                    loadTransactions(); // Recarrega a lista
+                    
+                    // Atualiza o dashboard se estivermos na aba de dashboard
+                    const activeSection = document.querySelector('.section.active');
+                    if (activeSection && activeSection.id === 'dashboard') {
+                        loadDashboard();
+                    }
+                } else {
+                    const errorData = await response.json();
+                    throw new Error(errorData.mensagem || 'Erro ao excluir transação');
+                }
+            } catch (error) {
+                showAlert(`Erro ao excluir transação: ${error.message}`, 'error');
+            }
+        }
+
+        // Form handler for editing transactions
         document.addEventListener('DOMContentLoaded', function() {
+            document.getElementById('edit-transaction-form').addEventListener('submit', async function(e) {
+                e.preventDefault();
+                
+                const transactionId = document.getElementById('edit-transaction-id').value;
+                const transactionData = {
+                    descricao: document.getElementById('edit-transaction-description').value,
+                    valor: parseFloat(document.getElementById('edit-transaction-amount').value),
+                    cartao_tipo: document.getElementById('edit-transaction-card-type').value,
+                    cartao_final: document.getElementById('edit-transaction-card-final').value
+                };
+                
+                try {
+                    const response = await fetch(`${API_BASE}/transactions/${transactionId}`, {
+                        method: 'PUT',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify(transactionData)
+                    });
+                    
+                    if (response.ok) {
+                        showAlert('Transação atualizada com sucesso!', 'success');
+                        closeEditModal();
+                        loadTransactions(); // Recarrega a lista
+                        
+                        // Atualiza o dashboard se estivermos na aba de dashboard
+                        const activeSection = document.querySelector('.section.active');
+                        if (activeSection && activeSection.id === 'dashboard') {
+                            loadDashboard();
+                        }
+                    } else {
+                        const errorData = await response.json();
+                        throw new Error(errorData.mensagem || 'Erro ao atualizar transação');
+                    }
+                } catch (error) {
+                    showAlert(`Erro ao atualizar transação: ${error.message}`, 'error');
+                }
+            });
+            
+            // Fecha o modal quando clica fora dele
+            window.onclick = function(event) {
+                const modal = document.getElementById('editModal');
+                if (event.target === modal) {
+                    closeEditModal();
+                }
+            };
+            
+            // Initialize dashboard on page load
             loadDashboard();
         });
     </script>

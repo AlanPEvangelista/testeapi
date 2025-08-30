@@ -20,6 +20,8 @@ import logging
 import os
 import requests
 import time
+import concurrent.futures
+import threading
 from flask import Flask, request, jsonify, Response, render_template, send_from_directory
 from flask_cors import CORS
 from config import Config
@@ -257,7 +259,7 @@ def health_check():
     # Verifica User Service
     try:
         user_url = f"{app.config['USER_SERVICE_URL']}/users/health"
-        response = requests.get(user_url, timeout=5)
+        response = requests.get(user_url, timeout=2)  # Reduzido para 2 segundos
         status_servicos['user_service'] = {
             'status': 'ativo' if response.status_code == 200 else 'erro',
             'codigo': response.status_code,
@@ -274,7 +276,7 @@ def health_check():
     # Verifica Transaction Service
     try:
         transaction_url = f"{app.config['TRANSACTION_SERVICE_URL']}/transactions/health"
-        response = requests.get(transaction_url, timeout=5)
+        response = requests.get(transaction_url, timeout=2)  # Reduzido para 2 segundos
         status_servicos['transaction_service'] = {
             'status': 'ativo' if response.status_code == 200 else 'erro',
             'codigo': response.status_code,
@@ -299,6 +301,7 @@ def health_check():
 def relatorio_usuario(user_id):
     """
     Gera relatório agregado de um usuário, combinando dados de múltiplos serviços.
+    Utiliza requisições paralelas para melhor performance.
     
     Args:
         user_id (int): ID do usuário
@@ -308,11 +311,70 @@ def relatorio_usuario(user_id):
     """
     app.logger.info(f"Gerando relatório agregado para usuário {user_id}")
     
+    def buscar_dados_usuario():
+        """Busca dados do usuário no User Service."""
+        try:
+            user_url = f"{app.config['USER_SERVICE_URL']}/users/{user_id}"
+            response = fazer_requisicao_com_retry(
+                url=user_url,
+                method='GET',
+                headers={'Content-Type': 'application/json'}
+            )
+            return ('user', response)
+        except Exception as e:
+            return ('user', e)
+    
+    def buscar_transacoes_usuario():
+        """Busca transações do usuário no Transaction Service."""
+        try:
+            transaction_url = f"{app.config['TRANSACTION_SERVICE_URL']}/transactions/user/{user_id}"
+            response = fazer_requisicao_com_retry(
+                url=transaction_url,
+                method='GET',
+                headers={'Content-Type': 'application/json'}
+            )
+            return ('transactions', response)
+        except Exception as e:
+            return ('transactions', e)
+    
+    def buscar_estatisticas_usuario():
+        """Busca estatísticas do usuário no Transaction Service."""
+        try:
+            stats_url = f"{app.config['TRANSACTION_SERVICE_URL']}/transactions/stats/user/{user_id}"
+            response = fazer_requisicao_com_retry(
+                url=stats_url,
+                method='GET',
+                headers={'Content-Type': 'application/json'}
+            )
+            return ('stats', response)
+        except Exception as e:
+            return ('stats', e)
+    
     try:
-        # Busca dados do usuário no User Service
-        user_url = f"{app.config['USER_SERVICE_URL']}/users/{user_id}"
-        user_response = requests.get(user_url, timeout=app.config['REQUEST_TIMEOUT'])
+        # Executa todas as requisições em paralelo
+        with concurrent.futures.ThreadPoolExecutor(max_workers=3) as executor:
+            # Submete todas as tarefas simultaneamente
+            future_user = executor.submit(buscar_dados_usuario)
+            future_transactions = executor.submit(buscar_transacoes_usuario)
+            future_stats = executor.submit(buscar_estatisticas_usuario)
+            
+            # Coleta os resultados
+            results = {}
+            for future in concurrent.futures.as_completed([future_user, future_transactions, future_stats], timeout=10):
+                try:
+                    tipo, response = future.result()
+                    results[tipo] = response
+                except Exception as e:
+                    app.logger.error(f"Erro em requisição paralela: {str(e)}")
         
+        # Processa resultado dos dados do usuário
+        if 'user' not in results or isinstance(results['user'], Exception):
+            return jsonify({
+                'erro': 'Erro ao buscar dados do usuário',
+                'mensagem': 'Não foi possível recuperar informações do usuário'
+            }), 500
+        
+        user_response = results['user']
         if user_response.status_code == 404:
             return jsonify({
                 'erro': 'Usuário não encontrado',
@@ -327,24 +389,20 @@ def relatorio_usuario(user_id):
         
         usuario_dados = user_response.json()
         
-        # Busca transações do usuário no Transaction Service
-        transaction_url = f"{app.config['TRANSACTION_SERVICE_URL']}/transactions/user/{user_id}"
-        transaction_response = requests.get(transaction_url, timeout=app.config['REQUEST_TIMEOUT'])
+        # Processa resultado das transações
+        transacoes_dados = {'transacoes': [], 'resumo': {}}
+        if 'transactions' in results and not isinstance(results['transactions'], Exception):
+            transaction_response = results['transactions']
+            if transaction_response.status_code == 200:
+                transacoes_dados = transaction_response.json()
         
-        if transaction_response.status_code != 200:
-            # Se não conseguir buscar transações, retorna dados básicos do usuário
-            transacoes_dados = {'transacoes': [], 'resumo': {}}
-        else:
-            transacoes_dados = transaction_response.json()
-        
-        # Busca estatísticas detalhadas
-        stats_url = f"{app.config['TRANSACTION_SERVICE_URL']}/transactions/stats/user/{user_id}"
-        stats_response = requests.get(stats_url, timeout=app.config['REQUEST_TIMEOUT'])
-        
+        # Processa resultado das estatísticas
         estatisticas = {}
-        if stats_response.status_code == 200:
-            stats_data = stats_response.json()
-            estatisticas = stats_data.get('resumo_geral', {})
+        if 'stats' in results and not isinstance(results['stats'], Exception):
+            stats_response = results['stats']
+            if stats_response.status_code == 200:
+                stats_data = stats_response.json()
+                estatisticas = stats_data.get('resumo_geral', {})
         
         # Monta o relatório agregado
         relatorio = {
@@ -358,14 +416,18 @@ def relatorio_usuario(user_id):
                 'fonte_dados': {
                     'usuario': 'User Service',
                     'transacoes': 'Transaction Service'
+                },
+                'performance': {
+                    'requisicoes_paralelas': True,
+                    'tempo_otimizado': True
                 }
             }
         }
         
-        app.logger.info(f"Relatório gerado com sucesso para usuário {user_id}")
+        app.logger.info(f"Relatório gerado com sucesso para usuário {user_id} (requisições paralelas)")
         return jsonify(relatorio), 200
         
-    except requests.exceptions.Timeout:
+    except concurrent.futures.TimeoutError:
         app.logger.error(f"Timeout ao gerar relatório para usuário {user_id}")
         return jsonify({
             'erro': 'Timeout na consulta',

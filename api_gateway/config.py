@@ -38,16 +38,16 @@ class Config:
     USER_SERVICE_URL = 'http://localhost:5001'
     TRANSACTION_SERVICE_URL = 'http://localhost:5002'
     
-    # Configurações de timeout para requisições HTTP
-    REQUEST_TIMEOUT = 30  # segundos
+    # Configurações de timeout para requisições HTTP (otimizado para microservices locais)
+    REQUEST_TIMEOUT = 5  # segundos
     
     # Configurações de logs
     LOG_LEVEL = 'INFO'
     LOG_FORMAT = '%(asctime)s - %(name)s - %(levelname)s - %(message)s'
     
-    # Configurações de retry para comunicação entre serviços
-    MAX_RETRY_ATTEMPTS = 3
-    RETRY_DELAY = 1  # segundos
+    # Configurações de retry para comunicação entre serviços (otimizado para performance)
+    MAX_RETRY_ATTEMPTS = 2
+    RETRY_DELAY = 0.5  # segundos
     
     # Mapeamento de rotas para serviços
     ROUTE_MAPPING = {

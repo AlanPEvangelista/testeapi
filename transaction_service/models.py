@@ -266,20 +266,42 @@ class Lancamento(db.Model):
         Raises:
             ValueError: Se os novos dados forem inválidos
         """
+        # Valida cada campo individualmente antes de atualizar
         if descricao is not None:
-            self.descricao = descricao
+            # Validação da descrição
+            if not descricao or len(descricao.strip()) < 3:
+                raise ValueError("Descrição deve ter pelo menos 3 caracteres")
+            if len(descricao.strip()) > 255:
+                raise ValueError("Descrição não pode exceder 255 caracteres")
+            self.descricao = descricao.strip()
         
         if valor is not None:
+            # Validação do valor
+            old_valor = self.valor
             self.valor = valor
+            try:
+                self._validar_valor()
+            except ValueError:
+                self.valor = old_valor  # Reverte se inválido
+                raise
         
         if cartao_tipo is not None:
-            self.cartao_tipo = cartao_tipo
+            # Validação do tipo de cartão
+            tipos_validos = ['Crédito', 'Débito', 'Pré-pago']
+            if not cartao_tipo or cartao_tipo.strip() not in tipos_validos:
+                raise ValueError(f"Tipo de cartão deve ser um dos seguintes: {', '.join(tipos_validos)}")
+            self.cartao_tipo = cartao_tipo.strip()
         
         if cartao_final is not None:
-            self.cartao_final = cartao_final
-        
-        # Revalida os dados após atualização
-        self._validar_dados()
+            # Validação dos últimos dígitos do cartão
+            if not cartao_final:
+                raise ValueError("Últimos 4 dígitos do cartão são obrigatórios")
+            cartao_limpo = cartao_final.strip()
+            if len(cartao_limpo) != 4:
+                raise ValueError("Devem ser fornecidos exatamente 4 dígitos do cartão")
+            if not cartao_limpo.isdigit():
+                raise ValueError("Últimos dígitos do cartão devem ser numéricos")
+            self.cartao_final = cartao_limpo
     
     def __repr__(self):
         """

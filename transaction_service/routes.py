@@ -496,7 +496,98 @@ def estatisticas_usuario(user_id):
             'mensagem': 'Não foi possível calcular as estatísticas'
         }), 500
 
-@transaction_routes.route('/transactions/health', methods=['GET'])
+@transaction_routes.route('/transactions/charts/aggregated', methods=['GET'])
+def dados_agregados_graficos():
+    """
+    Retorna dados agregados para geração de gráficos no dashboard.
+    
+    Inclui:
+    - Valor total gasto por usuário
+    - Valor total por tipo de cartão
+    - Estatísticas gerais para visualização
+    
+    Returns:
+        JSON: Dados agregados para gráficos
+        Status: 200 (sucesso) ou 500 (erro interno)
+    """
+    try:
+        logger.info("Solicitação de dados agregados para gráficos")
+        
+        # Dados por usuário - valor total gasto por cada usuário
+        dados_por_usuario = db.session.query(
+            Lancamento.usuario_id,
+            db.func.sum(Lancamento.valor).label('total_gasto'),
+            db.func.count(Lancamento.id).label('total_transacoes')
+        ).group_by(Lancamento.usuario_id).all()
+        
+        # Busca nomes dos usuários (com fallback se User Service estiver indisponível)
+        usuarios_info = {}
+        for usuario_id, total_gasto, total_transacoes in dados_por_usuario:
+            try:
+                # Tenta buscar dados do usuário
+                usuario_existe, usuario_dados = verificar_usuario_existe(usuario_id)
+                if usuario_existe:
+                    usuarios_info[usuario_id] = {
+                        'nome': usuario_dados.get('nome', f'Usuário {usuario_id}'),
+                        'total_gasto': float(total_gasto),
+                        'total_transacoes': total_transacoes
+                    }
+                else:
+                    usuarios_info[usuario_id] = {
+                        'nome': f'Usuário {usuario_id}',
+                        'total_gasto': float(total_gasto),
+                        'total_transacoes': total_transacoes
+                    }
+            except Exception:
+                # Fallback se não conseguir buscar dados do usuário
+                usuarios_info[usuario_id] = {
+                    'nome': f'Usuário {usuario_id}',
+                    'total_gasto': float(total_gasto),
+                    'total_transacoes': total_transacoes
+                }
+        
+        # Dados por tipo de cartão
+        dados_por_cartao = db.session.query(
+            Lancamento.cartao_tipo,
+            db.func.sum(Lancamento.valor).label('total_gasto'),
+            db.func.count(Lancamento.id).label('total_transacoes')
+        ).group_by(Lancamento.cartao_tipo).all()
+        
+        cartao_info = {}
+        for cartao_tipo, total_gasto, total_transacoes in dados_por_cartao:
+            cartao_info[cartao_tipo] = {
+                'total_gasto': float(total_gasto),
+                'total_transacoes': total_transacoes
+            }
+        
+        # Estatísticas gerais
+        total_geral = float(db.session.query(db.func.sum(Lancamento.valor)).scalar() or 0)
+        total_transacoes_geral = db.session.query(db.func.count(Lancamento.id)).scalar() or 0
+        
+        resposta = {
+            'dados_por_usuario': usuarios_info,
+            'dados_por_cartao': cartao_info,
+            'estatisticas_gerais': {
+                'total_gasto_sistema': total_geral,
+                'total_transacoes_sistema': total_transacoes_geral,
+                'numero_usuarios_ativos': len(usuarios_info),
+                'tipos_cartao_utilizados': len(cartao_info)
+            },
+            'timestamp_geracao': datetime.utcnow().isoformat()
+        }
+        
+        logger.info(f"Dados agregados gerados: {len(usuarios_info)} usuários, {len(cartao_info)} tipos de cartão")
+        
+        return jsonify(resposta), 200
+        
+    except Exception as e:
+        logger.error(f"Erro ao gerar dados agregados para gráficos: {str(e)}")
+        return jsonify({
+            'erro': 'Erro interno do servidor',
+            'mensagem': 'Não foi possível gerar dados agregados para os gráficos'
+        }), 500
+
+@transaction_routes.route('/transactions/health', methods=['GET']))
 def health_check():
     """
     Endpoint para verificação de saúde do serviço.

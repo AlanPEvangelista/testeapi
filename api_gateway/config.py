@@ -39,7 +39,7 @@ class Config:
     TRANSACTION_SERVICE_URL = 'http://localhost:5002'
     
     # Configurações de timeout para requisições HTTP (otimizado para microservices locais)
-    REQUEST_TIMEOUT = 5  # segundos
+    REQUEST_TIMEOUT = 15  # segundos - aumentado para permitir busca de nomes de usuários
     
     # Configurações de logs
     LOG_LEVEL = 'INFO'

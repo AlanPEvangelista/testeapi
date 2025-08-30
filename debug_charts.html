@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Debug - Gráficos Dashboard</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; background: #f5f5f5; }
+        .container { max-width: 1200px; margin: 0 auto; background: white; padding: 20px; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+        .chart-container { width: 48%; height: 300px; display: inline-block; margin: 1%; border: 1px solid #ddd; padding: 10px; border-radius: 5px; }
+        .status { padding: 15px; margin: 10px 0; border-radius: 5px; }
+        .success { background: #d4edda; border: 1px solid #c3e6cb; color: #155724; }
+        .error { background: #f8d7da; border: 1px solid #f5c6cb; color: #721c24; }
+        .warning { background: #fff3cd; border: 1px solid #ffeaa7; color: #856404; }
+        .info { background: #d1ecf1; border: 1px solid #bee5eb; color: #0c5460; }
+        button { padding: 10px 20px; margin: 5px; background: #007bff; color: white; border: none; border-radius: 5px; cursor: pointer; }
+        button:hover { background: #0056b3; }
+        .debug-output { background: #f8f9fa; padding: 15px; border-radius: 5px; margin: 10px 0; max-height: 300px; overflow-y: auto; font-family: monospace; font-size: 12px; }
+        canvas { width: 100% !important; height: 250px !important; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🔧 Debug - Gráficos Dashboard</h1>
+        
+        <div class="status info">
+            <strong>Status:</strong> <span id="status">Aguardando teste...</span>
+        </div>
+        
+        <div>
+            <button onclick="testFullFlow()">🧪 Teste Completo</button>
+            <button onclick="testAPI()">🔗 Testar API</button>
+            <button onclick="testCharts()">📊 Testar Gráficos</button>
+            <button onclick="clearDebug()">🗑️ Limpar Log</button>
+        </div>
+        
+        <div class="debug-output" id="debug-output">
+            📝 Log de debug aparecerá aqui...<br>
+        </div>
+        
+        <div class="chart-container">
+            <h3>👥 Valor por Usuário</h3>
+            <canvas id="userChart"></canvas>
+        </div>
+        
+        <div class="chart-container">
+            <h3>💳 Valor por Cartão</h3>
+            <canvas id="cardChart"></canvas>
+        </div>
+    </div>
+
+    <script>
+        const API_BASE = 'http://localhost:5000/api';
+        let userChart = null;
+        let cardChart = null;
+        
+        function debug(message, type = 'info') {
+            const output = document.getElementById('debug-output');
+            const timestamp = new Date().toLocaleTimeString();
+            const icon = type === 'error' ? '❌' : type === 'warning' ? '⚠️' : type === 'success' ? '✅' : 'ℹ️';
+            output.innerHTML += `<div style="color: ${type === 'error' ? '#dc3545' : type === 'success' ? '#28a745' : type === 'warning' ? '#ffc107' : '#17a2b8'}">${timestamp} ${icon} ${message}</div>`;
+            output.scrollTop = output.scrollHeight;
+            console.log(`[${timestamp}] ${message}`);
+        }
+        
+        function clearDebug() {
+            document.getElementById('debug-output').innerHTML = '📝 Log limpo...<br>';
+        }
+        
+        function setStatus(message, type = 'info') {
+            const status = document.getElementById('status');
+            status.textContent = message;
+            status.parentElement.className = `status ${type}`;
+        }
+        
+        async function testAPI() {
+            debug('🔗 Iniciando teste da API...');
+            setStatus('Testando API...', 'warning');
+            
+            try {
+                // Test health endpoint
+                debug('Testando endpoint de saúde...');
+                const healthResponse = await fetch('http://localhost:5000/health');
+                debug(`Health Status: ${healthResponse.status} ${healthResponse.statusText}`, healthResponse.ok ? 'success' : 'error');
+                
+                if (healthResponse.ok) {
+                    const healthData = await healthResponse.json();
+                    debug(`Serviços ativos: ${Object.keys(healthData.servicos).length}`, 'success');
+                }
+                
+                // Test chart data endpoint
+                debug('Testando endpoint de dados dos gráficos...');
+                const chartResponse = await fetch(`${API_BASE}/transactions/charts/aggregated`);
+                debug(`Chart API Status: ${chartResponse.status} ${chartResponse.statusText}`, chartResponse.ok ? 'success' : 'error');
+                
+                if (chartResponse.ok) {
+                    const chartData = await chartResponse.json();
+                    debug(`Dados recebidos: ${Object.keys(chartData.dados_por_usuario || {}).length} usuários, ${Object.keys(chartData.dados_por_cartao || {}).length} tipos de cartão`, 'success');
+                    debug(`Total no sistema: R$ ${chartData.estatisticas_gerais?.total_gasto_sistema || 0}`, 'info');
+                    
+                    setStatus('API funcionando corretamente', 'success');
+                    return chartData;
+                } else {
+                    throw new Error(`Erro na API: ${chartResponse.status}`);
+                }
+                
+            } catch (error) {
+                debug(`Erro na API: ${error.message}`, 'error');
+                setStatus('Erro na API', 'error');
+                return null;
+            }
+        }
+        
+        async function testCharts() {
+            debug('📊 Iniciando teste dos gráficos...');
+            setStatus('Testando criação de gráficos...', 'warning');
+            
+            try {
+                // Test Chart.js availability
+                if (typeof Chart === 'undefined') {
+                    throw new Error('Chart.js não carregado');
+                }
+                debug('Chart.js carregado com sucesso', 'success');
+                
+                // Test canvas elements
+                const userCanvas = document.getElementById('userChart');
+                const cardCanvas = document.getElementById('cardChart');
+                
+                if (!userCanvas || !cardCanvas) {
+                    throw new Error('Canvas elements não encontrados');
+                }
+                debug('Canvas elements encontrados', 'success');
+                
+                // Test with demo data
+                const demoUserData = {
+                    '1': { nome: 'João Silva', total_gasto: 1250.75, total_transacoes: 8 },
+                    '2': { nome: 'Maria Santos', total_gasto: 892.30, total_transacoes: 5 },
+                    '3': { nome: 'Pedro Oliveira', total_gasto: 654.90, total_transacoes: 3 }
+                };
+                
+                const demoCardData = {
+                    'Crédito': { total_gasto: 1450.20, total_transacoes: 9 },
+                    'Débito': { total_gasto: 987.45, total_transacoes: 5 },
+                    'Pré-pago': { total_gasto: 360.30, total_transacoes: 2 }
+                };
+                
+                // Create user chart
+                debug('Criando gráfico de usuários...');
+                createUserChart(demoUserData);
+                debug('Gráfico de usuários criado', 'success');
+                
+                // Create card chart
+                debug('Criando gráfico de cartões...');
+                createCardChart(demoCardData);
+                debug('Gráfico de cartões criado', 'success');
+                
+                setStatus('Gráficos criados com sucesso', 'success');
+                
+            } catch (error) {
+                debug(`Erro ao criar gráficos: ${error.message}`, 'error');
+                setStatus('Erro na criação dos gráficos', 'error');
+            }
+        }
+        
+        async function testFullFlow() {
+            debug('🧪 Iniciando teste completo...');
+            clearDebug();
+            
+            // Test API first
+            const apiData = await testAPI();
+            
+            if (apiData) {
+                debug('📊 API funcionando, testando gráficos com dados reais...');
+                setStatus('Criando gráficos com dados reais...', 'warning');
+                
+                try {
+                    createUserChart(apiData.dados_por_usuario || {});
+                    createCardChart(apiData.dados_por_cartao || {});
+                    
+                    debug('Gráficos criados com dados reais', 'success');
+                    setStatus('Teste completo bem-sucedido!', 'success');
+                    
+                } catch (error) {
+                    debug(`Erro ao criar gráficos com dados reais: ${error.message}`, 'error');
+                    debug('Tentando com dados de demonstração...', 'warning');
+                    await testCharts();
+                }
+            } else {
+                debug('API não funcionando, usando dados de demonstração...', 'warning');
+                await testCharts();
+            }
+        }
+        
+        function createUserChart(userData) {
+            const ctx = document.getElementById('userChart');
+            if (!ctx) throw new Error('Canvas userChart não encontrado');
+            
+            // Destroy existing chart
+            if (userChart) {
+                userChart.destroy();
+            }
+            
+            // Prepare data
+            const labels = Object.entries(userData).map(([id, data]) => data.nome || `Usuário ${id}`);
+            const values = Object.values(userData).map(data => data.total_gasto || 0);
+            const colors = ['#3498db', '#e74c3c', '#2ecc71', '#f39c12', '#9b59b6'];
+            
+            userChart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        label: 'Valor Total Gasto (R$)',
+                        data: values,
+                        backgroundColor: colors.slice(0, labels.length),
+                        borderWidth: 2
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            ticks: {
+                                callback: function(value) {
+                                    return 'R$ ' + value.toFixed(0);
+                                }
+                            }
+                        }
+                    },
+                    plugins: {
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    return `R$ ${context.parsed.y.toFixed(2)}`;
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+        }
+        
+        function createCardChart(cardData) {
+            const ctx = document.getElementById('cardChart');
+            if (!ctx) throw new Error('Canvas cardChart não encontrado');
+            
+            // Destroy existing chart
+            if (cardChart) {
+                cardChart.destroy();
+            }
+            
+            // Prepare data
+            const labels = Object.keys(cardData);
+            const values = Object.values(cardData).map(data => data.total_gasto || 0);
+            const colors = {
+                'Crédito': '#e74c3c',
+                'Débito': '#3498db',
+                'Pré-pago': '#2ecc71'
+            };
+            
+            cardChart = new Chart(ctx, {
+                type: 'doughnut',
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        label: 'Valor Total por Cartão',
+                        data: values,
+                        backgroundColor: labels.map(label => colors[label] || '#95a5a6'),
+                        borderWidth: 3
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    const total = context.dataset.data.reduce((a, b) => a + b, 0);
+                                    const percentage = total > 0 ? ((context.parsed * 100) / total).toFixed(1) : 0;
+                                    return `${context.label}: R$ ${context.parsed.toFixed(2)} (${percentage}%)`;
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+        }
+        
+        // Auto-run test on page load
+        window.addEventListener('load', () => {
+            debug('🚀 Página carregada, pronto para testar!', 'success');
+            setStatus('Pronto para testar', 'info');
+        });
+    </script>
+</body>
+</html>

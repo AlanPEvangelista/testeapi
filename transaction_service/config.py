@@ -47,8 +47,8 @@ class Config:
     USER_SERVICE_URL = 'http://localhost:5001'
     API_GATEWAY_URL = 'http://localhost:5000'
     
-    # Configurações de timeout para requisições HTTP
-    REQUEST_TIMEOUT = 30  # segundos
+    # Configurações de timeout para requisições HTTP (otimizado para performance local)
+    REQUEST_TIMEOUT = 3  # segundos
     
     # Configurações de logs
     LOG_LEVEL = 'INFO'
@@ -61,6 +61,6 @@ class Config:
     VALOR_MINIMO_TRANSACAO = 0.01  # R$ 0,01
     VALOR_MAXIMO_TRANSACAO = 99999.99  # R$ 99.999,99
     
-    # Configurações de retry para comunicação entre serviços
-    MAX_RETRY_ATTEMPTS = 3
-    RETRY_DELAY = 1  # segundos
+    # Configurações de retry para comunicação entre serviços (otimizado para performance)
+    MAX_RETRY_ATTEMPTS = 2
+    RETRY_DELAY = 0.3  # segundos

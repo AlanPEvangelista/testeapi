@@ -367,3 +367,147 @@
 2025-08-30 16:39:02,322 - app - INFO - Debug mode: True
 2025-08-30 16:39:02,322 - app - INFO - Database: sqlite:///user_database.db
 2025-08-30 16:39:02,324 - app - INFO - ==================================================
+2025-08-30 17:02:51,721 - app - INFO - Banco de dados inicializado para User Service
+2025-08-30 17:02:51,731 - app - INFO - ==================================================
+2025-08-30 17:02:51,731 - app - INFO - INICIANDO USER SERVICE
+2025-08-30 17:02:51,731 - app - INFO - ==================================================
+2025-08-30 17:02:51,731 - app - INFO - Servidor rodando na porta: 5001
+2025-08-30 17:02:51,731 - app - INFO - Debug mode: True
+2025-08-30 17:02:51,731 - app - INFO - Database: sqlite:///user_database.db
+2025-08-30 17:02:51,731 - app - INFO - ==================================================
+2025-08-30 17:02:51,824 - app - INFO - Banco de dados inicializado para User Service
+2025-08-30 17:02:51,829 - app - INFO - ==================================================
+2025-08-30 17:02:51,829 - app - INFO - INICIANDO USER SERVICE
+2025-08-30 17:02:51,829 - app - INFO - ==================================================
+2025-08-30 17:02:51,829 - app - INFO - Servidor rodando na porta: 5001
+2025-08-30 17:02:51,834 - app - INFO - Debug mode: True
+2025-08-30 17:02:51,834 - app - INFO - Database: sqlite:///user_database.db
+2025-08-30 17:02:51,834 - app - INFO - ==================================================
+2025-08-30 17:13:54,390 - app - INFO - Banco de dados inicializado para User Service
+2025-08-30 17:13:54,395 - app - INFO - ==================================================
+2025-08-30 17:13:54,395 - app - INFO - INICIANDO USER SERVICE
+2025-08-30 17:13:54,401 - app - INFO - ==================================================
+2025-08-30 17:13:54,401 - app - INFO - Servidor rodando na porta: 5001
+2025-08-30 17:13:54,401 - app - INFO - Debug mode: True
+2025-08-30 17:13:54,401 - app - INFO - Database: sqlite:///user_database.db
+2025-08-30 17:13:54,401 - app - INFO - ==================================================
+2025-08-30 17:13:55,755 - app - INFO - Banco de dados inicializado para User Service
+2025-08-30 17:13:55,759 - app - INFO - ==================================================
+2025-08-30 17:13:55,759 - app - INFO - INICIANDO USER SERVICE
+2025-08-30 17:13:55,759 - app - INFO - ==================================================
+2025-08-30 17:13:55,759 - app - INFO - Servidor rodando na porta: 5001
+2025-08-30 17:13:55,759 - app - INFO - Debug mode: True
+2025-08-30 17:13:55,759 - app - INFO - Database: sqlite:///user_database.db
+2025-08-30 17:13:55,759 - app - INFO - ==================================================
+2025-08-30 17:29:42,650 - app - INFO - Banco de dados inicializado para User Service
+2025-08-30 17:29:42,650 - app - INFO - ==================================================
+2025-08-30 17:29:42,650 - app - INFO - INICIANDO USER SERVICE
+2025-08-30 17:29:42,650 - app - INFO - ==================================================
+2025-08-30 17:29:42,650 - app - INFO - Servidor rodando na porta: 5001
+2025-08-30 17:29:42,650 - app - INFO - Debug mode: True
+2025-08-30 17:29:42,660 - app - INFO - Database: sqlite:///user_database.db
+2025-08-30 17:29:42,660 - app - INFO - ==================================================
+2025-08-30 17:39:03,586 - app - INFO - Banco de dados inicializado para User Service
+2025-08-30 17:39:03,594 - app - INFO - ==================================================
+2025-08-30 17:39:03,594 - app - INFO - INICIANDO USER SERVICE
+2025-08-30 17:39:03,594 - app - INFO - ==================================================
+2025-08-30 17:39:03,594 - app - INFO - Servidor rodando na porta: 5001
+2025-08-30 17:39:03,594 - app - INFO - Debug mode: True
+2025-08-30 17:39:03,594 - app - INFO - Database: sqlite:///user_database.db
+2025-08-30 17:39:03,594 - app - INFO - ==================================================
+2025-08-30 18:18:51,068 - app - INFO - Banco de dados inicializado para User Service
+2025-08-30 18:18:51,080 - app - INFO - ==================================================
+2025-08-30 18:18:51,080 - app - INFO - INICIANDO USER SERVICE
+2025-08-30 18:18:51,082 - app - INFO - ==================================================
+2025-08-30 18:18:51,082 - app - INFO - Servidor rodando na porta: 5001
+2025-08-30 18:18:51,082 - app - INFO - Debug mode: True
+2025-08-30 18:18:51,082 - app - INFO - Database: sqlite:///user_database.db
+2025-08-30 18:18:51,082 - app - INFO - ==================================================
+2025-08-30 18:34:46,801 - app - INFO - Banco de dados inicializado para User Service
+2025-08-30 18:34:46,807 - app - INFO - ==================================================
+2025-08-30 18:34:46,807 - app - INFO - INICIANDO USER SERVICE
+2025-08-30 18:34:46,808 - app - INFO - ==================================================
+2025-08-30 18:34:46,808 - app - INFO - Servidor rodando na porta: 5001
+2025-08-30 18:34:46,808 - app - INFO - Debug mode: True
+2025-08-30 18:34:46,808 - app - INFO - Database: sqlite:///user_database.db
+2025-08-30 18:34:46,808 - app - INFO - ==================================================
+2025-08-30 18:34:49,054 - app - INFO - Banco de dados inicializado para User Service
+2025-08-30 18:34:49,061 - app - INFO - ==================================================
+2025-08-30 18:34:49,061 - app - INFO - INICIANDO USER SERVICE
+2025-08-30 18:34:49,061 - app - INFO - ==================================================
+2025-08-30 18:34:49,061 - app - INFO - Servidor rodando na porta: 5001
+2025-08-30 18:34:49,063 - app - INFO - Debug mode: True
+2025-08-30 18:34:49,063 - app - INFO - Database: sqlite:///user_database.db
+2025-08-30 18:34:49,063 - app - INFO - ==================================================
+2025-08-30 18:34:49,629 - app - INFO - Banco de dados inicializado para User Service
+2025-08-30 18:34:49,636 - app - INFO - ==================================================
+2025-08-30 18:34:49,636 - app - INFO - INICIANDO USER SERVICE
+2025-08-30 18:34:49,637 - app - INFO - ==================================================
+2025-08-30 18:34:49,638 - app - INFO - Servidor rodando na porta: 5001
+2025-08-30 18:34:49,639 - app - INFO - Debug mode: True
+2025-08-30 18:34:49,639 - app - INFO - Database: sqlite:///user_database.db
+2025-08-30 18:34:49,640 - app - INFO - ==================================================
+2025-08-30 18:36:03,355 - app - INFO - Banco de dados inicializado para User Service
+2025-08-30 18:36:03,367 - app - INFO - ==================================================
+2025-08-30 18:36:03,369 - app - INFO - INICIANDO USER SERVICE
+2025-08-30 18:36:03,369 - app - INFO - ==================================================
+2025-08-30 18:36:03,369 - app - INFO - Servidor rodando na porta: 5001
+2025-08-30 18:36:03,370 - app - INFO - Debug mode: True
+2025-08-30 18:36:03,370 - app - INFO - Database: sqlite:///user_database.db
+2025-08-30 18:36:03,370 - app - INFO - ==================================================
+2025-08-30 18:36:04,363 - app - INFO - Banco de dados inicializado para User Service
+2025-08-30 18:36:04,371 - app - INFO - ==================================================
+2025-08-30 18:36:04,371 - app - INFO - INICIANDO USER SERVICE
+2025-08-30 18:36:04,372 - app - INFO - ==================================================
+2025-08-30 18:36:04,372 - app - INFO - Servidor rodando na porta: 5001
+2025-08-30 18:36:04,372 - app - INFO - Debug mode: True
+2025-08-30 18:36:04,372 - app - INFO - Database: sqlite:///user_database.db
+2025-08-30 18:36:04,373 - app - INFO - ==================================================
+2025-08-30 18:39:07,271 - app - INFO - Banco de dados inicializado para User Service
+2025-08-30 18:39:07,279 - app - INFO - ==================================================
+2025-08-30 18:39:07,279 - app - INFO - INICIANDO USER SERVICE
+2025-08-30 18:39:07,279 - app - INFO - ==================================================
+2025-08-30 18:39:07,279 - app - INFO - Servidor rodando na porta: 5001
+2025-08-30 18:39:07,279 - app - INFO - Debug mode: True
+2025-08-30 18:39:07,281 - app - INFO - Database: sqlite:///user_database.db
+2025-08-30 18:39:07,281 - app - INFO - ==================================================
+2025-08-30 18:39:07,369 - app - INFO - Banco de dados inicializado para User Service
+2025-08-30 18:39:07,374 - app - INFO - ==================================================
+2025-08-30 18:39:07,374 - app - INFO - INICIANDO USER SERVICE
+2025-08-30 18:39:07,374 - app - INFO - ==================================================
+2025-08-30 18:39:07,374 - app - INFO - Servidor rodando na porta: 5001
+2025-08-30 18:39:07,374 - app - INFO - Debug mode: True
+2025-08-30 18:39:07,375 - app - INFO - Database: sqlite:///user_database.db
+2025-08-30 18:39:07,375 - app - INFO - ==================================================
+2025-08-30 18:44:35,328 - app - INFO - Banco de dados inicializado para User Service
+2025-08-30 18:44:35,336 - app - INFO - ==================================================
+2025-08-30 18:44:35,337 - app - INFO - INICIANDO USER SERVICE
+2025-08-30 18:44:35,337 - app - INFO - ==================================================
+2025-08-30 18:44:35,337 - app - INFO - Servidor rodando na porta: 5001
+2025-08-30 18:44:35,338 - app - INFO - Debug mode: True
+2025-08-30 18:44:35,338 - app - INFO - Database: sqlite:///user_database.db
+2025-08-30 18:44:35,339 - app - INFO - ==================================================
+2025-08-30 18:44:36,996 - app - INFO - Banco de dados inicializado para User Service
+2025-08-30 18:44:37,002 - app - INFO - ==================================================
+2025-08-30 18:44:37,002 - app - INFO - INICIANDO USER SERVICE
+2025-08-30 18:44:37,002 - app - INFO - ==================================================
+2025-08-30 18:44:37,002 - app - INFO - Servidor rodando na porta: 5001
+2025-08-30 18:44:37,006 - app - INFO - Debug mode: True
+2025-08-30 18:44:37,006 - app - INFO - Database: sqlite:///user_database.db
+2025-08-30 18:44:37,006 - app - INFO - ==================================================
+2025-08-30 18:47:16,062 - app - INFO - Banco de dados inicializado para User Service
+2025-08-30 18:47:16,065 - app - INFO - ==================================================
+2025-08-30 18:47:16,065 - app - INFO - INICIANDO USER SERVICE
+2025-08-30 18:47:16,065 - app - INFO - ==================================================
+2025-08-30 18:47:16,065 - app - INFO - Servidor rodando na porta: 5001
+2025-08-30 18:47:16,065 - app - INFO - Debug mode: True
+2025-08-30 18:47:16,065 - app - INFO - Database: sqlite:///user_database.db
+2025-08-30 18:47:16,072 - app - INFO - ==================================================
+2025-08-30 18:47:18,075 - app - INFO - Banco de dados inicializado para User Service
+2025-08-30 18:47:18,087 - app - INFO - ==================================================
+2025-08-30 18:47:18,087 - app - INFO - INICIANDO USER SERVICE
+2025-08-30 18:47:18,087 - app - INFO - ==================================================
+2025-08-30 18:47:18,087 - app - INFO - Servidor rodando na porta: 5001
+2025-08-30 18:47:18,088 - app - INFO - Debug mode: True
+2025-08-30 18:47:18,089 - app - INFO - Database: sqlite:///user_database.db
+2025-08-30 18:47:18,089 - app - INFO - ==================================================

@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teste de Gráficos</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; }
+        .chart-container { width: 400px; height: 300px; margin: 20px; border: 1px solid #ccc; padding: 10px; }
+        .chart-title { font-weight: bold; margin-bottom: 10px; }
+        canvas { width: 100%; height: 250px; }
+        button { padding: 10px 20px; margin: 5px; background: #3498db; color: white; border: none; border-radius: 5px; cursor: pointer; }
+        button:hover { background: #2980b9; }
+    </style>
+</head>
+<body>
+    <h1>Teste de Gráficos - Sistema de Transações</h1>
+    
+    <button onclick="testCharts()">🧪 Testar Gráficos</button>
+    <button onclick="testAPI()">🔗 Testar API</button>
+    
+    <div class="chart-container">
+        <div class="chart-title">👥 Valor Gasto por Usuário</div>
+        <canvas id="userValueChart"></canvas>
+    </div>
+    
+    <div class="chart-container">
+        <div class="chart-title">💳 Valor por Tipo de Cartão</div>
+        <canvas id="cardTypeChart"></canvas>
+    </div>
+    
+    <div id="results" style="margin-top: 20px; padding: 15px; background: #f8f9fa; border-radius: 5px;">
+        <h3>Resultados do Teste:</h3>
+        <div id="output">Clique em "Testar Gráficos" para começar...</div>
+    </div>
+
+    <script>
+        // Variáveis globais para os gráficos
+        let userValueChart = null;
+        let cardTypeChart = null;
+        
+        const API_BASE = 'http://localhost:5000/api';
+        
+        function log(message) {
+            const output = document.getElementById('output');
+            output.innerHTML += '<br>' + new Date().toLocaleTimeString() + ': ' + message;
+            console.log(message);
+        }
+        
+        async function testAPI() {
+            log('🔗 Testando API...');
+            try {
+                const response = await fetch(`${API_BASE}/transactions/charts/aggregated`);
+                log(`📡 Status da resposta: ${response.status} ${response.statusText}`);
+                
+                if (!response.ok) {
+                    throw new Error(`HTTP ${response.status}`);
+                }
+                
+                const data = await response.json();
+                log(`✅ Dados recebidos: ${Object.keys(data.dados_por_usuario || {}).length} usuários, ${Object.keys(data.dados_por_cartao || {}).length} tipos de cartão`);
+                log(`💰 Total no sistema: R$ ${data.estatisticas_gerais?.total_gasto_sistema || 0}`);
+                
+                return data;
+            } catch (error) {
+                log(`❌ Erro na API: ${error.message}`);
+                return null;
+            }
+        }
+        
+        async function testCharts() {
+            document.getElementById('output').innerHTML = '🧪 Iniciando teste...';
+            
+            // Test API first
+            const data = await testAPI();
+            if (!data) {
+                log('❌ Não foi possível obter dados da API. Usando dados de demonstração...');
+                createDemoCharts();
+                return;
+            }
+            
+            // Test chart creation
+            log('📊 Criando gráficos...');
+            try {
+                createUserValueChart(data.dados_por_usuario || {});
+                log('✅ Gráfico de usuários criado');
+                
+                createCardTypeChart(data.dados_por_cartao || {});
+                log('✅ Gráfico de cartões criado');
+                
+                log('🎉 Teste concluído com sucesso!');
+            } catch (error) {
+                log(`❌ Erro ao criar gráficos: ${error.message}`);
+            }
+        }
+        
+        function createDemoCharts() {
+            const demoUserData = {
+                '1': { nome: 'João Silva', total_gasto: 1250.75, total_transacoes: 8 },
+                '2': { nome: 'Maria Santos', total_gasto: 892.30, total_transacoes: 5 },
+                '3': { nome: 'Pedro Oliveira', total_gasto: 654.90, total_transacoes: 3 }
+            };
+            
+            const demoCardData = {
+                'Crédito': { total_gasto: 1450.20, total_transacoes: 9 },
+                'Débito': { total_gasto: 987.45, total_transacoes: 5 },
+                'Pré-pago': { total_gasto: 360.30, total_transacoes: 2 }
+            };
+            
+            createUserValueChart(demoUserData);
+            createCardTypeChart(demoCardData);
+            log('🎭 Gráficos de demonstração carregados');
+        }
+        
+        function createUserValueChart(dadosUsuarios) {
+            const ctx = document.getElementById('userValueChart');
+            if (!ctx) {
+                log('❌ Canvas userValueChart não encontrado');
+                return;
+            }
+            
+            try {
+                const context = ctx.getContext('2d');
+                
+                if (!dadosUsuarios || Object.keys(dadosUsuarios).length === 0) {
+                    log('⚠️ Nenhum dado de usuário disponível');
+                    return;
+                }
+                
+                const labels = [];
+                const valores = [];
+                const cores = ['#3498db', '#e74c3c', '#2ecc71', '#f39c12', '#9b59b6'];
+                
+                Object.entries(dadosUsuarios).forEach(([userId, dados]) => {
+                    labels.push(dados.nome || `Usuário ${userId}`);
+                    valores.push(dados.total_gasto || 0);
+                });
+                
+                if (userValueChart) {
+                    userValueChart.destroy();
+                }
+                
+                userValueChart = new Chart(context, {
+                    type: 'bar',
+                    data: {
+                        labels: labels,
+                        datasets: [{
+                            label: 'Valor Total Gasto (R$)',
+                            data: valores,
+                            backgroundColor: cores.slice(0, labels.length),
+                            borderWidth: 2
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        scales: {
+                            y: { beginAtZero: true }
+                        }
+                    }
+                });
+                
+                log(`📊 Gráfico de usuários: ${labels.length} barras criadas`);
+                
+            } catch (error) {
+                log(`❌ Erro no gráfico de usuários: ${error.message}`);
+            }
+        }
+        
+        function createCardTypeChart(dadosCartao) {
+            const ctx = document.getElementById('cardTypeChart');
+            if (!ctx) {
+                log('❌ Canvas cardTypeChart não encontrado');
+                return;
+            }
+            
+            try {
+                const context = ctx.getContext('2d');
+                
+                if (!dadosCartao || Object.keys(dadosCartao).length === 0) {
+                    log('⚠️ Nenhum dado de cartão disponível');
+                    return;
+                }
+                
+                const labels = [];
+                const valores = [];
+                const coresCartao = {
+                    'Crédito': '#e74c3c',
+                    'Débito': '#3498db',
+                    'Pré-pago': '#2ecc71'
+                };
+                
+                Object.entries(dadosCartao).forEach(([tipoCartao, dados]) => {
+                    labels.push(tipoCartao);
+                    valores.push(dados.total_gasto || 0);
+                });
+                
+                const cores = labels.map(label => coresCartao[label] || '#95a5a6');
+                
+                if (cardTypeChart) {
+                    cardTypeChart.destroy();
+                }
+                
+                cardTypeChart = new Chart(context, {
+                    type: 'doughnut',
+                    data: {
+                        labels: labels,
+                        datasets: [{
+                            label: 'Valor Total por Cartão',
+                            data: valores,
+                            backgroundColor: cores,
+                            borderWidth: 3
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false
+                    }
+                });
+                
+                log(`🍩 Gráfico de cartões: ${labels.length} segmentos criados`);
+                
+            } catch (error) {
+                log(`❌ Erro no gráfico de cartões: ${error.message}`);
+            }
+        }
+        
+        // Auto-test on page load
+        window.addEventListener('load', () => {
+            log('🚀 Página carregada. Pronto para testar!');
+        });
+    </script>
+</body>
+</html>

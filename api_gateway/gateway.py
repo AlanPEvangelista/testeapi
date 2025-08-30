@@ -259,7 +259,7 @@ def health_check():
     # Verifica User Service
     try:
         user_url = f"{app.config['USER_SERVICE_URL']}/users/health"
-        response = requests.get(user_url, timeout=2)  # Reduzido para 2 segundos
+        response = requests.get(user_url, timeout=5)  # Aumentado para 5 segundos para startup
         status_servicos['user_service'] = {
             'status': 'ativo' if response.status_code == 200 else 'erro',
             'codigo': response.status_code,
@@ -276,7 +276,7 @@ def health_check():
     # Verifica Transaction Service
     try:
         transaction_url = f"{app.config['TRANSACTION_SERVICE_URL']}/transactions/health"
-        response = requests.get(transaction_url, timeout=2)  # Reduzido para 2 segundos
+        response = requests.get(transaction_url, timeout=5)  # Aumentado para 5 segundos para startup
         status_servicos['transaction_service'] = {
             'status': 'ativo' if response.status_code == 200 else 'erro',
             'codigo': response.status_code,

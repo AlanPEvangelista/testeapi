@@ -502,7 +502,7 @@ def dados_agregados_graficos():
     Retorna dados agregados para geração de gráficos no dashboard.
     
     Inclui:
-    - Valor total gasto por usuário
+    - Valor total gasto por usuário (com nomes reais)
     - Valor total por tipo de cartão
     - Estatísticas gerais para visualização
     
@@ -520,26 +520,59 @@ def dados_agregados_graficos():
             db.func.count(Lancamento.id).label('total_transacoes')
         ).group_by(Lancamento.usuario_id).all()
         
-        # Busca nomes dos usuários (com fallback se User Service estiver indisponível)
+        # Busca nomes dos usuários do User Service de forma otimizada
         usuarios_info = {}
+        user_service_url = current_app.config['USER_SERVICE_URL']
+        # Usa timeout mais curto para requisições individuais
+        short_timeout = 1  # 1 segundo para cada requisição individual
+        max_total_time = 8  # Tempo máximo total para todas as requisições
+        
+        import time
+        start_time = time.time()
+        
         for usuario_id, total_gasto, total_transacoes in dados_por_usuario:
+            # Verifica se já passou do tempo limite total
+            if time.time() - start_time > max_total_time:
+                logger.warning(f"Tempo limite excedido para busca de nomes - usando nomes genéricos para usuários restantes")
+                # Usa nome genérico para os usuários restantes
+                usuarios_info[usuario_id] = {
+                    'nome': f'Usuário {usuario_id}',
+                    'total_gasto': float(total_gasto),
+                    'total_transacoes': total_transacoes
+                }
+                continue
+            
+            # Tenta buscar o nome real do usuário com timeout curto
+            nome_usuario = f'Usuário {usuario_id}'  # Nome padrão caso falhe
+            
             try:
-                # Tenta buscar dados do usuário
-                usuario_existe, usuario_dados = verificar_usuario_existe(usuario_id)
-                if usuario_existe:
-                    usuarios_info[usuario_id] = {
-                        'nome': usuario_dados.get('nome', f'Usuário {usuario_id}'),
-                        'total_gasto': float(total_gasto),
-                        'total_transacoes': total_transacoes
-                    }
+                # Faz requisição individual para cada usuário com timeout reduzido
+                url = f"{user_service_url}/users/{usuario_id}"
+                response = requests.get(url, timeout=short_timeout)
+                
+                if response.status_code == 200:
+                    usuario_data = response.json()
+                    nome_usuario = usuario_data.get('nome', f'Usuário {usuario_id}')
+                    logger.debug(f"Nome do usuário {usuario_id} obtido: {nome_usuario}")
                 else:
-                    usuarios_info[usuario_id] = {
-                        'nome': f'Usuário {usuario_id}',
-                        'total_gasto': float(total_gasto),
-                        'total_transacoes': total_transacoes
-                    }
-            except Exception:
-                # Fallback se não conseguir buscar dados do usuário
+                    logger.warning(f"Usuário {usuario_id} não encontrado no User Service (HTTP {response.status_code})")
+                    
+            except requests.exceptions.Timeout:
+                logger.warning(f"Timeout ao buscar dados do usuário {usuario_id} - usando nome genérico")
+            except requests.exceptions.ConnectionError:
+                logger.warning(f"Erro de conexão ao buscar dados do usuário {usuario_id} - usando nome genérico")
+            except Exception as e:
+                logger.warning(f"Erro ao buscar dados do usuário {usuario_id}: {str(e)} - usando nome genérico")
+            
+            usuarios_info[usuario_id] = {
+                'nome': nome_usuario,
+                'total_gasto': float(total_gasto),
+                'total_transacoes': total_transacoes
+            }
+        
+        # Adiciona os usuários que não foram processados (se o tempo limite foi excedido)
+        for usuario_id, total_gasto, total_transacoes in dados_por_usuario:
+            if usuario_id not in usuarios_info:
                 usuarios_info[usuario_id] = {
                     'nome': f'Usuário {usuario_id}',
                     'total_gasto': float(total_gasto),

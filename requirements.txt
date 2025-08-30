@@ -1,0 +1,29 @@
+# Dependências para Sistema Flask com Microservices
+# Sistema de Gestão de Usuários e Transações
+
+# Framework web principal
+Flask==2.3.2
+
+# ORM para gerenciamento de banco de dados
+SQLAlchemy==2.0.19
+Flask-SQLAlchemy==3.0.5
+
+# Comunicação entre serviços
+requests==2.31.0
+
+# CORS para comunicação entre microservices
+Flask-CORS==4.0.0
+
+# Validação de dados
+marshmallow==3.20.1
+flask-marshmallow==0.15.0
+
+# Logs e debugging
+python-dotenv==1.0.0
+
+# Testing (opcional para desenvolvimento)
+pytest==7.4.0
+pytest-flask==1.2.0
+
+# Formatação de data e hora
+python-dateutil==2.8.2
